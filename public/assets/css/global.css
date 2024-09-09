@@ -1,0 +1,103 @@
+.jconfirm-holder {
+    width: 400px;
+    margin: auto;
+}
+
+.navbtn-normal-bg {
+    background-color: rgb(241 245 249);
+    color: rgb(0 0 0);
+}
+.navbtn-normal-bg:hover {
+    background-color: rgb(226 232 240);
+}
+
+.navbtn-active-bg {
+    background-color: rgb(22 163 74);
+    color: rgb(255 255 255);
+}
+.navbtn-active-bg:hover {
+    background-color: rgb(21 128 61);
+}
+
+#navdrawer::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    #navdrawer::-webkit-scrollbar {
+        width: 5px;
+    }
+    #navdrawer::-webkit-scrollbar-thumb {
+        background-color: rgb(21 128 61);
+        border-radius: 100px;
+    }
+}
+
+#datatable_wrapper {
+    padding: 0rem 0.1rem !important;
+}
+#dt-search-0 {
+    padding: 0.2rem 1.25rem !important;
+}
+
+#dt-length-0 {
+    padding: 0.2rem !important;
+    width: 70px;
+}
+.dt-paging-button {
+    padding: 0.3rem 0.95rem !important;
+}
+
+.dt-empty {
+    font-size: 14px;
+    color: rgb(107 114 128) !important;
+    padding: 0.5rem 0.5rem !important;
+}
+
+.dt-info,
+label[for="dt-search-0"],
+label[for="dt-length-0"] {
+    font-size: 13px;
+    color: rgb(107 114 128) !important;
+}
+
+.tableButtonsContainer button {
+    padding: 0.3rem 0.8rem !important;
+    font-size: 13px !important;
+    color: rgb(255, 255, 255) !important;
+    border-radius: 0.25rem !important;
+    border: 1px solid rgb(145, 181, 255) !important;
+    background-color: rgb(0, 85, 255) !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s, outline 0.3s !important;
+}
+
+.tableButtonsContainer button:hover {
+    background-color: rgb(186, 209, 255) !important;
+}
+
+.tableButtonsContainer button:active {
+    background-color: rgb(0, 48, 143) !important;
+}
+
+/* Select2 */
+
+.select2-container {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+
+.select2-selection {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.select2-search {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+.select2-search__field {
+    margin-top: 8px;
+}
