@@ -2,3 +2,8 @@
 * Result data import
 * Admit card design
 * Admit card download handler
+
+install filament
+implement examinee panel
+implement authentication
+implement authorization with RBAC
