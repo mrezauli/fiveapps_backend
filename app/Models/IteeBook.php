@@ -12,6 +12,6 @@ class IteeBook extends Model
     protected $fillable = [
         'book_name',
         'book_price',
-        'status',
+        'status', 
     ];
 }

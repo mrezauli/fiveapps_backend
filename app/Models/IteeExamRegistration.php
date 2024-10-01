@@ -45,6 +45,13 @@ class IteeExamRegistration extends Model
         'status',
     ];
 
+    protected static function booting()
+    {
+        static::creating(function ($IteeExamRegistration) {
+            $IteeExamRegistration->user_id = auth()->id(); // or Auth::id();
+        });
+    }
+
     public function venue()
     {
         return $this->belongsTo(IteeVenue::class, 'itee_venue_id');
@@ -65,15 +72,18 @@ class IteeExamRegistration extends Model
         return $this->belongsTo(IteeBook::class, 'itee_book_id');
     }
 
-    public function fee() {
+    public function fee()
+    {
         return $this->belongsTo(IteeExamFee::class, 'exam_fees_id');
     }
 
-    public function result() {
+    public function result()
+    {
         return $this->hasOne(IteeExamResult::class, 'examine_id', 'examine_id');
     }
 
-    public function getBooks() {
+    public function getBooks()
+    {
         $bookIds = $this->itee_book_id;
 
         return IteeBook::whereIn('id', $bookIds)->get();

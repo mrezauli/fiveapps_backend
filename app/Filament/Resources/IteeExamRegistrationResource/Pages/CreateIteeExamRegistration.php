@@ -5,9 +5,10 @@ namespace App\Filament\Resources\IteeExamRegistrationResource\Pages;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Wizard\Step;
 use Filament\Resources\Pages\CreateRecord;
 use App\Filament\Resources\IteeExamRegistrationResource;
-use Filament\Forms\Components\Wizard\Step;
 
 class CreateIteeExamRegistration extends CreateRecord
 {
@@ -24,31 +25,25 @@ class CreateIteeExamRegistration extends CreateRecord
                         ->relationship('venue', 'name'),
                     Select::make('itee_exam_category_id')
                         ->relationship('category', 'name'),
-                    TextInput::make('itee_exam_type_id')
-                        ->numeric()
-                        ->default(null),
+                    Select::make('itee_exam_type_id')
+                        ->relationship('examType', 'name'),
                     TextInput::make('exam_center')
                         ->maxLength(255)
                         ->default(null),
-
-                    TextInput::make('examine_id')
+                    TextInput::make('examine_id') //need to think
                         ->maxLength(255)
-                        ->default(null),
-                    TextInput::make('user_id')
-                        ->numeric()
                         ->default(null),
                     TextInput::make('exam_fees')
                         ->maxLength(255)
                         ->default(null),
-                    TextInput::make('exam_fees_id')
-                        ->required()
-                        ->numeric(),
-                    Textarea::make('itee_book_id')
-                        ->required()
-                        ->columnSpanFull(),
+                    Select::make('exam_fees_id')
+                        ->relationship('fee', 'name'),
+                    Select::make('itee_book_id')
+                        ->relationship('book', 'book_name'),
                     TextInput::make('itee_book_fees')
                         ->maxLength(255)
                         ->default(null),
+
                 ]),
             Step::make('Personal')
                 ->description('Details about you')
@@ -64,12 +59,13 @@ class CreateIteeExamRegistration extends CreateRecord
                         ->tel()
                         ->maxLength(255)
                         ->default(null),
-                    TextInput::make('dob')
-                        ->maxLength(255)
-                        ->default(null),
-                    TextInput::make('gender')
-                        ->maxLength(255)
-                        ->default(null),
+                    DatePicker::make('dob')
+                        ->format('d/m/Y'),
+                    Select::make('gender')
+                        ->options([
+                            'male' => 'Male',
+                            'female' => 'Female',
+                        ]),
                     Textarea::make('address')
                         ->columnSpanFull(),
                     TextInput::make('post_code')

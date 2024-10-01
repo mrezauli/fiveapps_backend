@@ -50,11 +50,14 @@ use App\Http\Controllers\VMCarController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect()->route('dashboard');
-    } else {
-        return redirect()->route('login');
-    }
+    //want to remove to fit examinee routes
+    // if (auth()->check()) {
+    //     return redirect()->route('dashboard');
+    // } else {
+    //     return redirect()->route('login');
+    // }
+
+    return view('examinee.home');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
