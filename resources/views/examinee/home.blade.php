@@ -407,10 +407,11 @@
                                     </ul><!-- end ul -->
                                 </nav><!-- end main-menu -->
                                 <div class="nav-right-button">
-                                    <a href="login.html"
+                                    <a href="{{ route('login') }}"
                                         class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-transparent"><i
                                             class="mr-1 la la-sign-in"></i> Login</a>
-                                    <a href="sign-up.html" class="shadow-none btn theme-btn theme-btn-sm lh-26"><i
+                                    <a href="{{ route('examinee.register') }}"
+                                        class="shadow-none btn theme-btn theme-btn-sm lh-26"><i
                                             class="mr-1 la la-plus"></i> Sign up</a>
                                 </div><!-- end nav-right-button -->
                             </div><!-- end menu-wrapper -->
@@ -501,10 +502,11 @@
                 </li>
             </ul>
             <div class="px-4 pt-5 text-center btn-box">
-                <a href="login.html" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i
+                <a href="{{ route('login') }}" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i
                         class="mr-1 la la-sign-in"></i> Login</a>
                 <span class="mx-2 fs-15 font-weight-medium d-inline-block">Or</span>
-                <a href="sign-up.html" class="shadow-none btn theme-btn theme-btn-sm"><i class="mr-1 la la-plus"></i>
+                <a href="{{ route('examinee.register') }}" class="shadow-none btn theme-btn theme-btn-sm"><i
+                        class="mr-1 la la-plus"></i>
                     Sign up</a>
             </div>
         </div><!-- end off-canvas-menu -->

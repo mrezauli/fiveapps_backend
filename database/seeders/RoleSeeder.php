@@ -36,11 +36,15 @@ class RoleSeeder extends Seeder {
     Role::create([
       'name' => 'NDC Admin'
     ]);
-    
+
+    Role::create([
+        'name' => 'Examinee'
+      ]);
+
 
     $superAdmin->givePermissionTo(Permission::all());
-  
+
     $admin->givePermissionTo(Permission::all());
-  
+
   }
 }

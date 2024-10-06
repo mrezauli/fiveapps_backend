@@ -44,6 +44,8 @@ class DashboardController extends Controller
             return redirect()->route('vm.cars.trip.index');
         } else if (CustomHelper::userRoleName(auth()->user()) == 'BKIICT Admin') {
             return redirect()->route('bkiict.course.index');
+        } else if (CustomHelper::userRoleName(auth()->user()) == 'Examinee') { // examinee dashboard
+            return view('examinee.dashboard');
         } else {
             Auth::logout();
             return redirect('login')->with("error", "Wrong Credentials");

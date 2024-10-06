@@ -60,6 +60,7 @@ Route::get('/', function () {
     return view('examinee.home');
 });
 
+//make dashboard route to fit examinee
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
