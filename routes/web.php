@@ -1,53 +1,54 @@
 <?php
 
 
-use App\Http\Controllers\BCCStaffController;
-use App\Http\Controllers\BjetController;
-use App\Http\Controllers\BKIICTBatchController;
-use App\Http\Controllers\BKIICTStudentController;
-use App\Http\Controllers\BKIICTTeacherController;
-use App\Http\Controllers\BKIICTCenterController;
-use App\Http\Controllers\BKIICTCourseController;
-use App\Http\Controllers\BKIICTCoursePdfController;
-use App\Http\Controllers\ConnectionController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DistrictController;
-use App\Http\Controllers\DivisionController;
-use App\Http\Controllers\IEENoticeController;
-use App\Http\Controllers\ISPController;
-use App\Http\Controllers\ITEEAdmitCardController;
-use App\Http\Controllers\ITEEExamCategoryController;
-use App\Http\Controllers\ITEEExamTypeController;
-use App\Http\Controllers\ITEEBooksController;
-use App\Http\Controllers\ITEEExamFeeController;
-use App\Http\Controllers\ITEECourseOutlineController;
-use App\Http\Controllers\ITEEExamApplicationController;
-use App\Http\Controllers\IteeProgramsController;
-use App\Http\Controllers\IteeRecentEventsController;
-use App\Http\Controllers\ITEEResultPdfsController;
-use App\Http\Controllers\ITEEResultsController;
-use App\Http\Controllers\ITEEStudentsController;
-use App\Http\Controllers\ITEESyllabusController;
-use App\Http\Controllers\ITEEVenueController;
-use App\Http\Controllers\NDCAppointmentController;
-use App\Http\Controllers\NDCUserController;
-use App\Http\Controllers\NTTNDataController;
-use App\Http\Controllers\NttnProviderController;
-use App\Http\Controllers\NTTNStaffController;
-use App\Http\Controllers\PdfDownloadController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PutData;
+use App\Http\Controllers\VMCarAssign;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ISPController;
+use App\Http\Controllers\BjetController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TripController;
-use App\Http\Controllers\UnionController;
-use App\Http\Controllers\UpazilaController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VehicleManagementController;
-use App\Http\Controllers\VMCarAssign;
-use App\Http\Controllers\VMCarAssignController;
+use App\Http\Controllers\UnionController;
 use App\Http\Controllers\VMCarController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NDCUserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UpazilaController;
+use App\Http\Controllers\BCCStaffController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\NTTNDataController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IEENoticeController;
+use App\Http\Controllers\ITEEBooksController;
+use App\Http\Controllers\ITEEVenueController;
+use App\Http\Controllers\NTTNStaffController;
+use App\Http\Controllers\ConnectionController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\BKIICTBatchController;
+use App\Http\Controllers\ITEEExamFeeController;
+use App\Http\Controllers\ITEEResultsController;
+use App\Http\Controllers\PdfDownloadController;
+use App\Http\Controllers\VMCarAssignController;
+use App\Http\Controllers\BKIICTCenterController;
+use App\Http\Controllers\BKIICTCourseController;
+use App\Http\Controllers\ITEEExamTypeController;
+use App\Http\Controllers\IteeProgramsController;
+use App\Http\Controllers\ITEEStudentsController;
+use App\Http\Controllers\ITEESyllabusController;
+use App\Http\Controllers\NttnProviderController;
+use App\Http\Controllers\BKIICTStudentController;
+use App\Http\Controllers\BKIICTTeacherController;
+use App\Http\Controllers\ITEEAdmitCardController;
+use App\Http\Controllers\ITEEResultPdfsController;
+use App\Http\Controllers\NDCAppointmentController;
+use App\Http\Controllers\BKIICTCoursePdfController;
+use App\Http\Controllers\ITEEExamCategoryController;
+use App\Http\Controllers\IteeRecentEventsController;
+use App\Http\Controllers\ExamineeDashboardController;
+use App\Http\Controllers\ITEECourseOutlineController;
+use App\Http\Controllers\VehicleManagementController;
+use App\Http\Controllers\ITEEExamApplicationController;
 
 Route::get('/', function () {
     //want to remove to fit examinee routes
@@ -334,6 +335,18 @@ Route::middleware('auth')->group(function () {
         });
 
     });
+
+    // ITEE Exam Examinee Part Dashboard
+    Route::prefix('/examinee')->name('examinee.')->group(function () {
+        Route::get('/index', [ExamineeDashboardController::class, 'index'])->name('index');
+        Route::get('/enroll', [ExamineeDashboardController::class, 'create'])->name('enroll');
+        // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
+        // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
+        // Route::get('/edit/{id}', [IteeRecentEventsController::class, 'edit'])->middleware('role_or_permission:Super Admin|Update Recent Events')->name('edit');
+        // Route::get('/delete/{id}', [IteeRecentEventsController::class, 'delete'])->middleware('role_or_permission:Super Admin|Delete Recent Events')->name('delete');
+        // Route::get('/{id}', [IteeRecentEventsController::class, 'view'])->middleware('role_or_permission:Super Admin|List Of Recent Events')->name('view');
+    });
+
 
     // VM Log
     Route::prefix('vm')->name('vm.')->group(function () {
