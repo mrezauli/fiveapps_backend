@@ -12,9 +12,15 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+<<<<<<< Updated upstream
     //make these routes to fit examinee register
      Route::get('examinee/register', [RegisteredUserController::class, 'create'])->name('examinee.register');
       Route::post('examinee/register', [RegisteredUserController::class, 'store']);
+=======
+    //modify default auth register routes to fit examinee
+     Route::get('examinee/register', [RegisteredUserController::class, 'create'])->name('examinee.register');
+     Route::post('examinee/register', [RegisteredUserController::class, 'store']);
+>>>>>>> Stashed changes
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

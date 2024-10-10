@@ -6,33 +6,36 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class RoleSeeder extends Seeder {
-  /**
-   * Run the database seeds.
-   *
-   * @return void
-   */
-  public function run() {
-    $superAdmin = Role::create([
-      'name' => 'Super Admin'
-    ]);
+class RoleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $superAdmin = Role::create([
+            'name' => 'Super Admin'
+        ]);
 
-    $admin = Role::create([
-      'name' => 'Admin'
-    ]);
+        $admin = Role::create([
+            'name' => 'Admin'
+        ]);
 
-    $test = Role::create([
-      'name' => 'Test'
-    ]);
+        $test = Role::create([
+            'name' => 'Test'
+        ]);
 
-    Role::create([
-      'name' => 'BCC'
-    ]);
+        Role::create([
+            'name' => 'BCC'
+        ]);
 
-    Role::create([
-      'name' => 'NTTN'
-    ]);
+        Role::create([
+            'name' => 'NTTN'
+        ]);
 
+<<<<<<< Updated upstream
     Role::create([
       'name' => 'NDC Admin'
     ]);
@@ -48,3 +51,20 @@ class RoleSeeder extends Seeder {
 
   }
 }
+=======
+        Role::create([
+            'name' => 'NDC Admin'
+        ]);
+
+        Role::create([
+            'name' => 'Examinee'
+        ]);
+
+
+        $superAdmin->givePermissionTo(Permission::all());
+
+        $admin->givePermissionTo(Permission::all());
+
+    }
+}
+>>>>>>> Stashed changes
