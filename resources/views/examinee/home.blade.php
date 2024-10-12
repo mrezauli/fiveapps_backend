@@ -406,14 +406,26 @@
                                         </li>
                                     </ul><!-- end ul -->
                                 </nav><!-- end main-menu -->
-                                <div class="nav-right-button">
-                                    <a href="{{ route('login') }}"
-                                        class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-transparent"><i
-                                            class="mr-1 la la-sign-in"></i> Login</a>
-                                    <a href="{{ route('examinee.register') }}"
-                                        class="shadow-none btn theme-btn theme-btn-sm lh-26"><i
-                                            class="mr-1 la la-plus"></i> Sign up</a>
-                                </div><!-- end nav-right-button -->
+                                @if (Route::has('login'))
+                                    @auth
+                                        <div class="nav-right-button">
+                                            <a href="{{ route('dashboard') }}"
+                                                class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-white"><i
+                                                    class="mr-1 la la-dashboard"></i> Dashboard</a>
+                                        </div>
+                                    @else
+                                        <div class="nav-right-button">
+                                            <a href="{{ route('login') }}"
+                                                class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-transparent"><i
+                                                    class="mr-1 la la-sign-in"></i> Login</a>
+                                            @if (Route::has('examinee.register'))
+                                                <a href="{{ route('examinee.register') }}"
+                                                    class="shadow-none btn theme-btn theme-btn-sm lh-26"><i
+                                                        class="mr-1 la la-plus"></i> Sign up</a>
+                                            @endif
+                                        </div><!-- end nav-right-button -->
+                                    @endauth
+                                @endif
                             </div><!-- end menu-wrapper -->
                         </div><!-- end col-lg-9 -->
                     </div><!-- end row -->

@@ -339,7 +339,7 @@ Route::middleware('auth')->group(function () {
     // ITEE Exam Examinee Part Dashboard
     Route::prefix('/examinee')->name('examinee.')->group(function () {
         Route::get('/index', [ExamineeDashboardController::class, 'index'])->name('index');
-        Route::get('/enroll', [ExamineeDashboardController::class, 'create'])->name('enroll');
+        Route::get('/edit/{id}', [ExamineeDashboardController::class, 'edit'])->name('enroll');
         // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
         // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
         // Route::get('/edit/{id}', [IteeRecentEventsController::class, 'edit'])->middleware('role_or_permission:Super Admin|Update Recent Events')->name('edit');

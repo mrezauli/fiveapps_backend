@@ -867,7 +867,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p class="text-black card-price font-weight-bold">BDT {{ $examFee->fee }} (৳)</p>
                                     <div class="pl-3 card-action-wrap">
-                                        <a href="{{ route('examinee.enroll') }}"
+                                        <a href="{{ route('examinee.enroll', $examFee->id) }}"
                                             class="ml-1 shadow-sm cursor-pointer icon-element icon-element-sm text-success"
                                             data-toggle="tooltip" data-placement="top" data-title="Enroll"><i
                                                 class="la la-edit"></i></a>

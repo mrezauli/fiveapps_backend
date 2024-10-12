@@ -45,7 +45,8 @@ class ExamineeDashboardController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //dd(IteeExamFee::find($id));
+        return view('examinee.dashboard-checkout');
     }
 
     /**
