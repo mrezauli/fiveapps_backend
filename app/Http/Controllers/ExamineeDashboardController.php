@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IteeBook;
+use App\Models\IteeVenue;
 use App\Models\IteeExamFee;
+use App\Models\IteeExamType;
 use Illuminate\Http\Request;
+use App\Models\IteeExamCategory;
 
 class ExamineeDashboardController extends Controller
 {
@@ -45,8 +49,14 @@ class ExamineeDashboardController extends Controller
      */
     public function edit(string $id)
     {
-        //dd(IteeExamFee::find($id));
-        return view('examinee.dashboard-checkout');
+        $examFee = IteeExamFee::with(['exam_type', 'exam_category'])->findOrFail($id);
+        //dd($examFee->exam_type->id);
+        $venues = IteeVenue::all();
+        $categories = IteeExamCategory::all();
+        $types = IteeExamType::all();
+        $fees = IteeExamFee::all();
+        $books = IteeBook::all();
+        return view('examinee.dashboard-submit-course', compact('venues', 'categories', 'types', 'examFee', 'fees', 'books'));
     }
 
     /**
