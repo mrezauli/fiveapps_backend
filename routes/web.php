@@ -340,9 +340,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('/examinee')->name('examinee.')->group(function () {
         Route::get('/index', [ExamineeDashboardController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [ExamineeDashboardController::class, 'edit'])->name('enroll');
+        Route::post('/{id}', [ExamineeDashboardController::class, 'update'])->name('enrollment');
         // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
         // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
-        // Route::get('/edit/{id}', [IteeRecentEventsController::class, 'edit'])->middleware('role_or_permission:Super Admin|Update Recent Events')->name('edit');
         // Route::get('/delete/{id}', [IteeRecentEventsController::class, 'delete'])->middleware('role_or_permission:Super Admin|Delete Recent Events')->name('delete');
         // Route::get('/{id}', [IteeRecentEventsController::class, 'view'])->middleware('role_or_permission:Super Admin|List Of Recent Events')->name('view');
     });

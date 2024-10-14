@@ -328,7 +328,8 @@
                                                     <div class="shop-cart-btn">
                                                         <div class="avatar-xs">
                                                             <img class="rounded-full img-fluid"
-                                                                src="{{ asset('aduca/images/small-avatar-1.jpg" alt="Avatar image') }}">
+                                                                src="{{ asset('aduca/images/small-avatar-1.jpg') }}"
+                                                                alt="Avatar image">
                                                         </div>
                                                         <span class="dot-status bg-1"></span>
                                                     </div>
@@ -717,7 +718,8 @@
                 <i class="la la-times"></i>
             </div><!-- end off-canvas-menu-close -->
             <div class="px-4 logo-box">
-                <a href="index.html" class="logo"><img src="images/logo.png') }}" alt="logo"></a>
+                <a href="index.html" class="logo"><img src="{{ asset('aduca/images/logo.png') }}"
+                        alt="logo"></a>
             </div>
             <ul class="generic-list-item off-canvas-menu-list off--canvas-menu-list pt-35px">
                 <li><a href="dashboard.html"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg" height="18px"
@@ -850,10 +852,12 @@
                 <div class="mb-5 dashboard-heading">
                     <h3 class="fs-22 font-weight-semi-bold">Submit Course</h3>
                 </div>
-                <form action="#">
+                <form action="{{ route('examinee.enrollment', $examFee->id) }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="card card-item">
                         <div class="card-body">
-                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Basic info</h3>
+                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Exam Registration info</h3>
                             <div class="divider"><span></span></div>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -867,7 +871,8 @@
                                                         class="select-container-select" required>
                                                         <option value="">Select Venue</option>
                                                         @foreach ($venues as $venue)
-                                                            <option value="{{ $venue->id }}">{{ $venue->name }}
+                                                            <option value="{{ $venue->id }}">
+                                                                {{ $venue->name }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -970,33 +975,244 @@
                     </div><!-- end card -->
                     <div class="card card-item">
                         <div class="card-body">
-                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Video</h3>
+                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Personal info</h3>
                             <div class="divider"><span></span></div>
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="label-text">Video Title</label>
-                                        <input class="pl-3 form-control form--control" type="text" name="text"
-                                            placeholder="Video title">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Full Name</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="full_name" placeholder="Full Name"
+                                                        value="{{ $user->name }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Email Address</label>
+                                                    <input class="pl-3 form-control form--control" type="email"
+                                                        name="email" placeholder="Email Address"
+                                                        value="{{ $user->email }}">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="label-text">Video Category</label>
-                                        <input class="pl-3 form-control form--control" type="text" name="text"
-                                            placeholder="Video category">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Mobile Number</label>
+                                                    <input class="pl-3 form-control form--control" type="tel"
+                                                        id="phone" name="phone" pattern="^\01[0-9]{9}$"
+                                                        placeholder="01xxxxxxxxx" required
+                                                        value="{{ $user->phone }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Date of Birth:</label>
+                                                    <input class="pl-3 form-control form--control" max="2005-12-31"
+                                                        type="date" id="dob" name="dob" required>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div><!-- end col-lg-4 -->
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label class="label-text">Video URL</label>
-                                        <input class="pl-3 form-control form--control" type="text" name="text"
-                                            placeholder="Video URL">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label for="gender" class="label-text">Select a
+                                                        Gender</label>
+                                                    <select id="gender" name="gender"
+                                                        class="select-container-select" required>
+                                                        <option value="">Select Gender</option>
+                                                        <option value="male">Male</option>
+                                                        <option value="female">Female</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">LinkedIn Profile</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="linkedin" placeholder="LinkedIn Profile">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div><!-- end col-lg-4 -->
-                            </div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Address</label>
+                                                    <textarea class="pl-3 form-control form--control" id="address" name="address" rows="3"
+                                                        placeholder="Enter your address" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Post Code</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="post_code" placeholder="Post Code">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Occupation</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="occupation" placeholder="Occupation">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="mb-0 form-group">
+                                                {{-- <div class="media-body">
+                                                    <div class="file-upload-wrap file-upload-wrap-2">
+                                                        <input type="file" name="files[]"
+                                                            class="multi file-upload-input with-preview" multiple>
+                                                        <span class="file-upload-text"><i
+                                                                class="mr-2 la la-photo"></i>Upload a Photo</span>
+                                                    </div><!-- file-upload-wrap -->
+                                                    <p class="fs-14">Max file size is 5MB, Minimum dimension: 200x200
+                                                        And Suitable files are .jpg & .png</p>
+                                                </div> --}}
+                                                <label class="label-text">Profile Picture</label>
+                                                <div class="file-upload-wrap">
+                                                    <input type="file" name="photo"
+                                                        accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG"
+                                                        class="multi file-upload-input">
+                                                    <span class="file-upload-text"><i
+                                                            class="mr-2 la la-cloud-upload fs-18"></i>Drop file
+                                                        here
+                                                        or click to upload.</span>
+                                                </div><!-- file-upload-wrap -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col-lg-12 -->
+                        </div>
+                    </div><!-- end card-body -->
+                    <div class="card card-item">
+                        <div class="card-body">
+                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Academic info</h3>
+                            <div class="divider"><span></span></div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label for="education_qualification" class="label-text">Education
+                                                        Qualification</label>
+                                                    <select id="education_qualification"
+                                                        name="education_qualification" class="select-container-select"
+                                                        required>
+                                                        <option value="">Select Education
+                                                            Qualification</option>
+                                                        <option value="ssc">SSC or Equivalent</option>
+                                                        <option value="hsc">HSC or Equivalent</option>
+                                                        <option value="bsc">BSC or Equivalent</option>
+                                                        <option value="diploma">Diploma or Equivalent</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Group or Subject Name</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="subject_name"
+                                                        placeholder="Group (Science, Humanities) or Subject (CSE, EEE) Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Passing Year</label>
+                                                    <input class="pl-3 form-control form--control" type="number"
+                                                        min="1971" max="2005" name="passing_year"
+                                                        placeholder="Passing Year">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Institute</label>
+                                                    <input class="pl-3 form-control form--control" type="text""
+                                                        name="institute_name" placeholder="Institute">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Result</label>
+                                                    <input class="pl-3 form-control form--control" type="number"
+                                                        min="2.00" max="4.00" step="0.01" name="result"
+                                                        placeholder="Result">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Previous Passer ID (if any)</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="previous_passing_id"
+                                                        placeholder="Previous Passer ID (if any)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col-lg-12 -->
+                        </div>
+                    </div><!-- end card-body -->
+                    <div class="card card-item">
+                        <div class="card-body">
+                            <h3 class="pb-2 fs-22 font-weight-semi-bold">Payment info</h3>
+                            <div class="divider"><span></span></div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <div class="w-auto select-container">
+                                                    <label class="label-text">Transaction ID</label>
+                                                    <input class="pl-3 form-control form--control" type="text"
+                                                        name="transaction_id" placeholder="Transaction ID">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col-lg-12 -->
+                        </div>
+                    </div><!-- end card-body -->
                     <div class="pb-4 course-submit-btn-box">
                         <button class="btn theme-btn" type="submit">Submit Course</button>
                     </div>

@@ -845,8 +845,17 @@
                         <span class="file-upload-text"><i class="mr-2 la la-upload"></i>Upload a course</span>
                     </div><!-- file-upload-wrap -->
                 </div><!-- end breadcrumb-content -->
-                <div class="mb-5 section-block"></div>
-                <div class="mb-5 dashboard-heading">
+                <div class="mb-5 section-block">
+                    @if (isset($examFee))
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Success!</strong> Your course in in review!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                </div>
+                <div class="pt-5 mb-5 dashboard-heading">
                     <h3 class="fs-22 font-weight-semi-bold">My Courses</h3>
                 </div>
                 <div class="mb-5 dashboard-cards">
