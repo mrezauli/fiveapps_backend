@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Aduca - Education HTML Template</title>
-
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
@@ -18,8 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" sizes="16x16" href="{{ asset('aduca/images/favicon.png') }}">
+    @include('examinee.favicon') <!-- Including the sidebar -->
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('aduca/css/bootstrap.min.css') }}">
@@ -50,97 +47,6 @@
     ======================================-->
     <header class="bg-white header-menu-area">
         <div class="header-top pr-150px pl-150px border-bottom border-bottom-gray">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="header-widget">
-                            <ul class="flex-wrap generic-list-item d-flex align-items-center fs-14">
-                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
-                                        class="mr-1 la la-phone"></i><a href="tel:00123456789"> (00) 123 456 789</a>
-                                </li>
-                                <li class="d-flex align-items-center"><i class="mr-1 la la-envelope-o"></i><a
-                                        href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
-                            </ul>
-                        </div><!-- end header-widget -->
-                    </div><!-- end col-lg-6 -->
-                    <div class="col-lg-6">
-                        <div class="flex-wrap header-widget d-flex align-items-center justify-content-end">
-                            <div
-                                class="pr-3 mr-3 theme-picker d-flex align-items-center border-right border-right-gray">
-                                <button class="theme-picker-btn dark-mode-btn" title="Dark mode">
-                                    <svg id="moon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                                    </svg>
-                                </button>
-                                <button class="theme-picker-btn light-mode-btn" title="Light mode">
-                                    <svg id="sun" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="5"></circle>
-                                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="shop-cart">
-                                <ul>
-                                    <li>
-                                        <p class="shop-cart-btn d-flex align-items-center">
-                                            <i class="la la-shopping-cart"></i>
-                                            <span class="ml-1 product-count">2</span>
-                                        </p>
-                                        <ul class="cart-dropdown-menu">
-                                            <li class="media media-card">
-                                                <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{ asset('aduca/images/small-img.jpg') }}"
-                                                        alt="Cart image">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5><a href="course-details.html">The Complete JavaScript Course
-                                                            2021: From Zero to Expert!</a></h5>
-                                                    <span class="py-1 d-block lh-18">Kamran Ahmed</span>
-                                                    <p class="text-black font-weight-semi-bold lh-18">$12.99 <span
-                                                            class="before-price fs-14">$129.99</span></p>
-                                                </div>
-                                            </li>
-                                            <li class="media media-card">
-                                                <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{ asset('aduca/images/small-img.jpg') }}"
-                                                        alt="Cart image">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h5><a href="course-details.html">The Complete JavaScript Course
-                                                            2021: From Zero to Expert!</a></h5>
-                                                    <span class="py-1 d-block lh-18">Kamran Ahmed</span>
-                                                    <p class="text-black font-weight-semi-bold lh-18">$12.99 <span
-                                                            class="before-price fs-14">$129.99</span></p>
-                                                </div>
-                                            </li>
-                                            <li class="media media-card">
-                                                <div class="media-body fs-16">
-                                                    <p class="text-black font-weight-semi-bold lh-18">Total: <span
-                                                            class="cart-total">$12.99</span> <span
-                                                            class="before-price fs-14">$129.99</span></p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="shopping-cart.html" class="btn theme-btn w-100">Got to cart
-                                                    <i class="ml-1 la la-arrow-right icon"></i></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div><!-- end shop-cart -->
-                        </div><!-- end header-widget -->
-                    </div><!-- end col-lg-6 -->
-                </div><!-- end row -->
-            </div><!-- end container-fluid -->
         </div><!-- end header-top -->
         <div class="bg-white header-menu-content pr-150px pl-150px">
             <div class="container-fluid">
@@ -149,152 +55,14 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3">
                             <div class="logo-box justify-content-between">
-                                <a href="index.html" class="logo"><img src="{{ asset('aduca/images/logo.png') }}"
-                                        alt="logo"></a>
+                                <a href="{{ url('/') }}" class="logo"><img
+                                        src="{{ asset('aduca/images/logoBDITEC.png') }}" alt="logo"></a>
                                 <div class="user-btn-action">
-                                    <div class="mr-2 shadow-sm off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm"
-                                        data-toggle="tooltip" data-placement="top" title="Category menu">
-                                        <i class="la la-th-large"></i>
-                                    </div>
                                     <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm"
                                         data-toggle="tooltip" data-placement="top" title="Main menu">
                                         <i class="la la-bars"></i>
                                     </div>
                                 </div>
-                                <div class="pl-4 menu-category border-left border-left-gray">
-                                    <ul>
-                                        <li>
-                                            <a href="#">Categories <i class="la la-angle-down fs-12"></i></a>
-                                            <ul class="cat-dropdown-menu">
-                                                <li>
-                                                    <a href="course-grid.html">Development <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Development</a></li>
-                                                        <li><a href="#">Web Development</a></li>
-                                                        <li><a href="#">Mobile Apps</a></li>
-                                                        <li><a href="#">Game Development</a></li>
-                                                        <li><a href="#">Databases</a></li>
-                                                        <li><a href="#">Programming Languages</a></li>
-                                                        <li><a href="#">Software Testing</a></li>
-                                                        <li><a href="#">Software Engineering</a></li>
-                                                        <li><a href="#">E-Commerce</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">business <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Business</a></li>
-                                                        <li><a href="#">Finance</a></li>
-                                                        <li><a href="#">Entrepreneurship</a></li>
-                                                        <li><a href="#">Strategy</a></li>
-                                                        <li><a href="#">Real Estate</a></li>
-                                                        <li><a href="#">Home Business</a></li>
-                                                        <li><a href="#">Communications</a></li>
-                                                        <li><a href="#">Industry</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">IT & Software <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All IT & Software</a></li>
-                                                        <li><a href="#">IT Certification</a></li>
-                                                        <li><a href="#">Hardware</a></li>
-                                                        <li><a href="#">Network & Security</a></li>
-                                                        <li><a href="#">Operating Systems</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">Finance & Accounting <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#"> All Finance & Accounting</a></li>
-                                                        <li><a href="#">Accounting & Bookkeeping</a></li>
-                                                        <li><a href="#">Cryptocurrency & Blockchain</a></li>
-                                                        <li><a href="#">Economics</a></li>
-                                                        <li><a href="#">Investing & Trading</a></li>
-                                                        <li><a href="#">Other Finance & Economics</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">design <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Design</a></li>
-                                                        <li><a href="#">Graphic Design</a></li>
-                                                        <li><a href="#">Web Design</a></li>
-                                                        <li><a href="#">Design Tools</a></li>
-                                                        <li><a href="#">3D & Animation</a></li>
-                                                        <li><a href="#">User Experience</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">Personal Development <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Personal Development</a></li>
-                                                        <li><a href="#">Personal Transformation</a></li>
-                                                        <li><a href="#">Productivity</a></li>
-                                                        <li><a href="#">Leadership</a></li>
-                                                        <li><a href="#">Personal Finance</a></li>
-                                                        <li><a href="#">Career Development</a></li>
-                                                        <li><a href="#">Parenting & Relationships</a></li>
-                                                        <li><a href="#">Happiness</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">Marketing <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Marketing</a></li>
-                                                        <li><a href="#">Digital Marketing</a></li>
-                                                        <li><a href="#">Search Engine Optimization</a></li>
-                                                        <li><a href="#">Social Media Marketing</a></li>
-                                                        <li><a href="#">Branding</a></li>
-                                                        <li><a href="#">Video & Mobile Marketing</a></li>
-                                                        <li><a href="#">Affiliate Marketing</a></li>
-                                                        <li><a href="#">Growth Hacking</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">Health & Fitness <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Health & Fitness</a></li>
-                                                        <li><a href="#">Fitness</a></li>
-                                                        <li><a href="#">Sports</a></li>
-                                                        <li><a href="#">Dieting</a></li>
-                                                        <li><a href="#">Self Defense</a></li>
-                                                        <li><a href="#">Meditation</a></li>
-                                                        <li><a href="#">Mental Health</a></li>
-                                                        <li><a href="#">Yoga</a></li>
-                                                        <li><a href="#">Dance</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html">Photography <i
-                                                            class="la la-angle-right"></i></a>
-                                                    <ul class="sub-menu">
-                                                        <li><a href="#">All Photography</a></li>
-                                                        <li><a href="#">Digital Photography</a></li>
-                                                        <li><a href="#">Photography Fundamentals</a></li>
-                                                        <li><a href="#">Commercial Photography</a></li>
-                                                        <li><a href="#">Video Design</a></li>
-                                                        <li><a href="#">Photography Tools</a></li>
-                                                        <li><a href="#">Other</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div><!-- end menu-category -->
                             </div>
                         </div><!-- end col-lg-2 -->
                         <div class="col-lg-9">
@@ -302,107 +70,7 @@
                                 <nav class="main-menu">
                                     <ul>
                                         <li>
-                                            <a href="#">Home <i class="la la-angle-down fs-12"></i></a>
-                                            <ul class="dropdown-menu-item">
-                                                <li><a href="index.html">Home One</a></li>
-                                                <li><a href="home-2.html">Home Two</a></li>
-                                                <li><a href="home-3.html">Home Three</a></li>
-                                                <li><a href="home-4.html">Home four</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
-                                            <ul class="dropdown-menu-item">
-                                                <li><a href="course-grid.html">course grid</a></li>
-                                                <li><a href="course-list.html">course list</a></li>
-                                                <li><a href="course-grid-left-sidebar.html">grid left sidebar</a></li>
-                                                <li><a href="course-grid-right-sidebar.html">grid right sidebar</a>
-                                                </li>
-                                                <li><a href="course-list-left-sidebar.html">list left sidebar <span
-                                                            class="ribbon ribbon-blue-bg">New</span></a></li>
-                                                <li><a href="course-list-right-sidebar.html">list right sidebar <span
-                                                            class="ribbon ribbon-blue-bg">New</span></a></li>
-                                                <li><a href="course-details.html">course details</a></li>
-                                                <li><a href="lesson-details.html">lesson details</a></li>
-                                                <li><a href="my-courses.html">My courses</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">Student <i class="la la-angle-down fs-12"></i></a>
-                                            <ul class="dropdown-menu-item">
-                                                <li><a href="student-detail.html">student detail</a></li>
-                                                <li><a href="student-quiz.html">take quiz</a></li>
-                                                <li><a href="student-quiz-results.html">quiz results</a></li>
-                                                <li><a href="student-quiz-result-details.html">quiz details</a></li>
-                                                <li><a href="student-quiz-result-details-2.html">quiz details 2</a>
-                                                </li>
-                                                <li><a href="student-path.html">path details</a></li>
-                                                <li><a href="student-path-assessment.html">Skill Assessment</a></li>
-                                                <li><a href="student-path-assessment-result.html">Skill result</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-menu-has">
-                                            <a href="#">pages <i class="la la-angle-down fs-12"></i></a>
-                                            <div class="dropdown-menu-item mega-menu">
-                                                <ul class="row no-gutters">
-                                                    <li class="col-lg-3">
-                                                        <a href="dashboard.html">dashboard <span
-                                                                class="ribbon">Hot</span></a>
-                                                        <a href="about.html">about</a>
-                                                        <a href="teachers.html">Teachers</a>
-                                                        <a href="teacher-detail.html">Teacher detail</a>
-                                                        <a href="categories.html">categories</a>
-                                                        <a href="terms-and-conditions.html">Terms & conditions</a>
-                                                        <a href="privacy-policy.html">privacy policy</a>
-                                                    </li>
-                                                    <li class="col-lg-3">
-                                                        <a href="careers.html">careers</a>
-                                                        <a href="career-details.html">career details</a>
-                                                        <a href="become-a-teacher.html">become an instructor</a>
-                                                        <a href="faq.html">FAQs</a>
-                                                        <a href="admission.html">admission</a>
-                                                        <a href="gallery.html">gallery</a>
-                                                        <a href="pricing-table.html">pricing tables</a>
-                                                    </li>
-                                                    <li class="col-lg-3">
-                                                        <a href="contact.html">contact</a>
-                                                        <a href="sign-up.html">sign-up</a>
-                                                        <a href="login.html">login</a>
-                                                        <a href="recover.html">recover</a>
-                                                        <a href="shopping-cart.html">cart</a>
-                                                        <a href="checkout.html">checkout</a>
-                                                        <a href="error.html">page 404</a>
-                                                    </li>
-                                                    <li class="col-lg-3">
-                                                        <div class="menu-banner position-relative h-100">
-                                                            <div class="overlay rounded-rounded opacity-4"></div>
-                                                            <div
-                                                                class="bottom-0 left-0 p-4 menu-banner-content position-absolute">
-                                                                <h4
-                                                                    class="pb-3 text-white fs-20 font-weight-bold lh-26">
-                                                                    Try Aduca free for one month</h4>
-                                                                <a href="sign-up.html"
-                                                                    class="btn theme-btn theme-btn-sm theme-btn-white">Start
-                                                                    Learning <i
-                                                                        class="ml-1 la la-arrow-right icon"></i></a>
-                                                            </div>
-                                                            <img src="{{ asset('aduca/images/menu-banner-img.jpg') }}"
-                                                                alt="menu banner image"
-                                                                class="w-100 h-100 rounded-rounded">
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">blog <i class="la la-angle-down fs-12"></i></a>
-                                            <ul class="dropdown-menu-item">
-                                                <li><a href="blog-full-width.html">blog full width </a></li>
-                                                <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                                                <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                                                <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                                                <li><a href="blog-single.html">blog detail</a></li>
-                                            </ul>
+                                            <a href="{{ url('/') }}">Home</a>
                                         </li>
                                     </ul><!-- end ul -->
                                 </nav><!-- end main-menu -->
@@ -418,8 +86,8 @@
                                             <a href="{{ route('login') }}"
                                                 class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-transparent"><i
                                                     class="mr-1 la la-sign-in"></i> Login</a>
-                                            @if (Route::has('examinee.register'))
-                                                <a href="{{ route('examinee.register') }}"
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}"
                                                     class="shadow-none btn theme-btn theme-btn-sm lh-26"><i
                                                         class="mr-1 la la-plus"></i> Sign up</a>
                                             @endif
@@ -439,214 +107,27 @@
             </div><!-- end off-canvas-menu-close -->
             <ul class="generic-list-item off-canvas-menu-list pt-90px">
                 <li>
-                    <a href="#">Home</a>
-                    <ul class="sub-menu">
-                        <li><a href="index.html">Home One</a></li>
-                        <li><a href="home-2.html">Home Two</a></li>
-                        <li><a href="home-3.html">Home Three</a></li>
-                        <li><a href="home-4.html">Home four</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">courses</a>
-                    <ul class="sub-menu">
-                        <li><a href="course-grid.html">course grid</a></li>
-                        <li><a href="course-list.html">course list</a></li>
-                        <li><a href="course-grid-left-sidebar.html">grid left sidebar</a></li>
-                        <li><a href="course-grid-right-sidebar.html">grid right sidebar</a></li>
-                        <li><a href="course-list-left-sidebar.html">list left sidebar <span
-                                    class="ribbon ribbon-blue-bg">New</span></a></li>
-                        <li><a href="course-list-right-sidebar.html">list right sidebar <span
-                                    class="ribbon ribbon-blue-bg">New</span></a></li>
-                        <li><a href="course-details.html">course details</a></li>
-                        <li><a href="lesson-details.html">lesson details</a></li>
-                        <li><a href="my-courses.html">My courses</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Student</a>
-                    <ul class="sub-menu">
-                        <li><a href="student-detail.html">student detail</a></li>
-                        <li><a href="student-quiz.html">take quiz</a></li>
-                        <li><a href="student-quiz-results.html">quiz results</a></li>
-                        <li><a href="student-quiz-result-details.html">quiz details</a></li>
-                        <li><a href="student-quiz-result-details-2.html">quiz details 2</a></li>
-                        <li><a href="student-path.html">path details</a></li>
-                        <li><a href="student-path-assessment.html">Skill Assessment</a></li>
-                        <li><a href="student-path-assessment-result.html">Skill result</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">pages</a>
-                    <ul class="sub-menu">
-                        <li><a href="dashboard.html">dashboard <span class="ribbon">Hot</span></a></li>
-                        <li><a href="about.html">about</a></li>
-                        <li><a href="teachers.html">Teachers</a></li>
-                        <li><a href="teacher-detail.html">Teacher detail</a></li>
-                        <li><a href="careers.html">careers</a></li>
-                        <li><a href="career-details.html">career details</a></li>
-                        <li><a href="categories.html">categories</a></li>
-                        <li><a href="terms-and-conditions.html">Terms & conditions</a></li>
-                        <li><a href="privacy-policy.html">privacy policy</a></li>
-                        <li><a href="become-a-teacher.html">become an instructor</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="admission.html">admission</a></li>
-                        <li><a href="gallery.html">gallery</a></li>
-                        <li><a href="pricing-table.html">pricing tables</a></li>
-                        <li><a href="contact.html">contact</a></li>
-                        <li><a href="sign-up.html">sign-up</a></li>
-                        <li><a href="login.html">login</a></li>
-                        <li><a href="recover.html">recover</a></li>
-                        <li><a href="shopping-cart.html">cart</a></li>
-                        <li><a href="checkout.html">checkout</a></li>
-                        <li><a href="error.html">page 404</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">blog</a>
-                    <ul class="sub-menu">
-                        <li><a href="blog-full-width.html">blog full width </a></li>
-                        <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                        <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                        <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                        <li><a href="blog-single.html">blog detail</a></li>
-                    </ul>
+                    <a href="{{ url('/') }}">Home</a>
                 </li>
             </ul>
             <div class="px-4 pt-5 text-center btn-box">
-                <a href="{{ route('login') }}" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i
-                        class="mr-1 la la-sign-in"></i> Login</a>
-                <span class="mx-2 fs-15 font-weight-medium d-inline-block">Or</span>
-                <a href="{{ route('examinee.register') }}" class="shadow-none btn theme-btn theme-btn-sm"><i
-                        class="mr-1 la la-plus"></i>
-                    Sign up</a>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="mr-2 btn theme-btn theme-btn-sm lh-26 theme-btn-white"><i
+                                class="mr-1 la la-dashboard"></i> Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn theme-btn theme-btn-sm theme-btn-transparent"><i
+                                class="mr-1 la la-sign-in"></i> Login</a>
+                        @if (Route::has('register'))
+                            <span class="mx-2 fs-15 font-weight-medium d-inline-block">Or</span>
+                            <a href="{{ route('register') }}" class="shadow-none btn theme-btn theme-btn-sm"><i
+                                    class="mr-1 la la-plus"></i>
+                                Sign up</a>
+                        @endif
+                    @endauth
+                @endif
             </div>
         </div><!-- end off-canvas-menu -->
-        <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
-            <div class="shadow-sm off-canvas-menu-close cat-menu-close icon-element icon-element-sm"
-                data-toggle="tooltip" data-placement="left" title="Close menu">
-                <i class="la la-times"></i>
-            </div><!-- end off-canvas-menu-close -->
-            <ul class="generic-list-item off-canvas-menu-list pt-90px">
-                <li>
-                    <a href="course-grid.html">Development</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Development</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Mobile Apps</a></li>
-                        <li><a href="#">Game Development</a></li>
-                        <li><a href="#">Databases</a></li>
-                        <li><a href="#">Programming Languages</a></li>
-                        <li><a href="#">Software Testing</a></li>
-                        <li><a href="#">Software Engineering</a></li>
-                        <li><a href="#">E-Commerce</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">business</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Business</a></li>
-                        <li><a href="#">Finance</a></li>
-                        <li><a href="#">Entrepreneurship</a></li>
-                        <li><a href="#">Strategy</a></li>
-                        <li><a href="#">Real Estate</a></li>
-                        <li><a href="#">Home Business</a></li>
-                        <li><a href="#">Communications</a></li>
-                        <li><a href="#">Industry</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">IT & Software</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All IT & Software</a></li>
-                        <li><a href="#">IT Certification</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Network & Security</a></li>
-                        <li><a href="#">Operating Systems</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">Finance & Accounting</a>
-                    <ul class="sub-menu">
-                        <li><a href="#"> All Finance & Accounting</a></li>
-                        <li><a href="#">Accounting & Bookkeeping</a></li>
-                        <li><a href="#">Cryptocurrency & Blockchain</a></li>
-                        <li><a href="#">Economics</a></li>
-                        <li><a href="#">Investing & Trading</a></li>
-                        <li><a href="#">Other Finance & Economics</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">design</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Design</a></li>
-                        <li><a href="#">Graphic Design</a></li>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Design Tools</a></li>
-                        <li><a href="#">3D & Animation</a></li>
-                        <li><a href="#">User Experience</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">Personal Development</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Personal Development</a></li>
-                        <li><a href="#">Personal Transformation</a></li>
-                        <li><a href="#">Productivity</a></li>
-                        <li><a href="#">Leadership</a></li>
-                        <li><a href="#">Personal Finance</a></li>
-                        <li><a href="#">Career Development</a></li>
-                        <li><a href="#">Parenting & Relationships</a></li>
-                        <li><a href="#">Happiness</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">Marketing</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Marketing</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">Search Engine Optimization</a></li>
-                        <li><a href="#">Social Media Marketing</a></li>
-                        <li><a href="#">Branding</a></li>
-                        <li><a href="#">Video & Mobile Marketing</a></li>
-                        <li><a href="#">Affiliate Marketing</a></li>
-                        <li><a href="#">Growth Hacking</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">Health & Fitness</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Health & Fitness</a></li>
-                        <li><a href="#">Fitness</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Dieting</a></li>
-                        <li><a href="#">Self Defense</a></li>
-                        <li><a href="#">Meditation</a></li>
-                        <li><a href="#">Mental Health</a></li>
-                        <li><a href="#">Yoga</a></li>
-                        <li><a href="#">Dance</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="course-grid.html">Photography</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">All Photography</a></li>
-                        <li><a href="#">Digital Photography</a></li>
-                        <li><a href="#">Photography Fundamentals</a></li>
-                        <li><a href="#">Commercial Photography</a></li>
-                        <li><a href="#">Video Design</a></li>
-                        <li><a href="#">Photography Tools</a></li>
-                        <li><a href="#">Other</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!-- end off-canvas-menu -->
-        <div class="body-overlay"></div>
     </header><!-- end header-menu-area -->
     <!--======================================
         END HEADER AREA
@@ -763,147 +244,31 @@
         <span class="ring-shape ring-shape-7"></span>
         <div class="container">
             <div class="text-center section-heading">
-                <h2 class="section__title theme-font-2">Featured Courses</h2>
+                <h2 class="section__title theme-font-2">Featured Exam</h2>
             </div><!-- end section-heading -->
             <div class="mx-auto col-lg-10 mt-50px">
                 <div class="featured-course-carousel owl-action-styled owl--action-styled">
-                    <div class="border shadow-none card card-item card-item-list-layout border-gray">
-                        <div class="card-image">
-                            <a href="course-details.html" class="d-block">
-                                <img class="card-img-top" src="{{ asset('aduca/images/img8.jpg') }}"
-                                    alt="Card image cap">
-                            </a>
-                            <div class="course-badge-labels">
-                                <div class="course-badge">Bestseller</div>
-                                <div class="course-badge blue">-39%</div>
-                            </div>
-                        </div><!-- end card-image -->
-                        <div class="card-body">
-                            <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                            <h5 class="pb-1 card-title"><a href="course-details.html">Django with React | An Ecommerce
-                                    Website</a></h5>
-                            <p class="pb-1 card-text lh-24">Build an eCommerce platform from the ground up with React,
-                                Redux, Django & Postgres</p>
-                            <p class="card-text fs-15 font-weight-regular">By <a href="teacher-detail.html">Jose
-                                    Portilla</a> and 1 other</p>
-                            <div class="flex-wrap d-flex align-items-center fs-14">
-                                <p class="pb-2 mr-2 text-success font-weight-medium">Updated<span
-                                        class="pl-1 font-weight-bold">November 2020</span></p>
-                                <ul
-                                    class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                                    <li>23 total hours</li>
-                                    <li>All Levels</li>
-                                </ul>
-                            </div>
-                            <div class="pb-2 rating-wrap d-flex align-items-center">
-                                <div class="review-stars">
-                                    <span class="rating-number">4.4</span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-o"></span>
+                    @foreach ($examFees as $examFee)
+                        <div class="border shadow-none card card-item card-item-list-layout border-gray">
+                            <div class="card-image">
+                                <a href="course-details.html" class="d-block">
+                                    <?php $imageUrl = $examFee->exam_type->image; ?>
+                                    <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap"
+                                        style="height: 247px;">
+                                </a>
+                            </div><!-- end card-image -->
+                            <div class="card-body">
+                                <h5 class="pb-1 card-title"><a
+                                        href="course-details.html">{{ $examFee->exam_type->name }}</a></h5>
+                                <p class="pb-1 card-text lh-24">{{ $examFee->exam_category->name }}</p>
+                                <div class="pb-2 rating-wrap d-flex align-items-center">
+                                </div><!-- end rating-wrap -->
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <p class="text-black card-price font-weight-bold">BDT {{ $examFee->fee }} (৳)</p>
                                 </div>
-                                <span class="pl-1 rating-total">(20,230)</span>
-                            </div><!-- end rating-wrap -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-black card-price font-weight-bold">12.99 <span
-                                        class="before-price font-weight-medium">129.99</span></p>
-                                <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                                    title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                            </div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                    <div class="border shadow-none card card-item card-item-list-layout border-gray">
-                        <div class="card-image">
-                            <a href="course-details.html" class="d-block">
-                                <img class="card-img-top" src="{{ asset('aduca/images/img9.jpg') }}"
-                                    alt="Card image cap">
-                            </a>
-                            <div class="course-badge-labels">
-                                <div class="course-badge red">Hot & new</div>
-                            </div>
-                        </div><!-- end card-image -->
-                        <div class="card-body">
-                            <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">Intermediate</h6>
-                            <h5 class="pb-1 card-title"><a href="course-details.html">Python for Data Science and
-                                    Machine Learning Bootcamp</a></h5>
-                            <p class="pb-1 card-text lh-24">Learn how to use NumPy, Pandas, Seaborn , Matplotlib ,
-                                Plotly , Scikit-Learn , Machine Learning, Tensorflow , and more!</p>
-                            <p class="card-text fs-15 font-weight-regular">By <a href="teacher-detail.html">Jose
-                                    Portilla</a></p>
-                            <div class="flex-wrap d-flex align-items-center fs-14">
-                                <p class="pb-2 mr-2 text-success font-weight-medium">Updated<span
-                                        class="pl-1 font-weight-bold">November 2020</span></p>
-                                <ul
-                                    class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                                    <li>23 total hours</li>
-                                    <li>All Levels</li>
-                                </ul>
-                            </div>
-                            <div class="pb-2 rating-wrap d-flex align-items-center">
-                                <div class="review-stars">
-                                    <span class="rating-number">4.4</span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-o"></span>
-                                </div>
-                                <span class="pl-1 rating-total">(20,230)</span>
-                            </div><!-- end rating-wrap -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-black card-price font-weight-bold">129.99</p>
-                                <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                                    title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                            </div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
-                    <div class="border shadow-none card card-item card-item-list-layout border-gray">
-                        <div class="card-image">
-                            <a href="course-details.html" class="d-block">
-                                <img class="card-img-top" src="{{ asset('aduca/images/img10.jpg') }}"
-                                    alt="Card image cap">
-                            </a>
-                            <div class="course-badge-labels">
-                                <div class="course-badge">Highest rated</div>
-                            </div>
-                        </div><!-- end card-image -->
-                        <div class="card-body">
-                            <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                            <h5 class="pb-1 card-title"><a href="course-details.html">Java Programming Masterclass for
-                                    Software Developers</a></h5>
-                            <p class="pb-1 card-text lh-24">Learn Java In This Course And Become a Computer Programmer.
-                                Obtain valuable Core Java Skills And Java Certification</p>
-                            <p class="card-text fs-15 font-weight-regular">By <a href="teacher-detail.html">Jose
-                                    Portilla</a> and 1 other</p>
-                            <div class="flex-wrap d-flex align-items-center fs-14">
-                                <p class="pb-2 mr-2 text-success font-weight-medium">Updated<span
-                                        class="pl-1 font-weight-bold">November 2020</span></p>
-                                <ul
-                                    class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                                    <li>23 total hours</li>
-                                    <li>All Levels</li>
-                                </ul>
-                            </div>
-                            <div class="pb-2 rating-wrap d-flex align-items-center">
-                                <div class="review-stars">
-                                    <span class="rating-number">4.4</span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star"></span>
-                                    <span class="la la-star-o"></span>
-                                </div>
-                                <span class="pl-1 rating-total">(20,230)</span>
-                            </div><!-- end rating-wrap -->
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-black card-price font-weight-bold">129.99</p>
-                                <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                                    title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-                            </div>
-                        </div><!-- end card-body -->
-                    </div><!-- end card -->
+                            </div><!-- end card-body -->
+                        </div><!-- end card -->
+                    @endforeach
                 </div><!-- end featured-course-carousel -->
             </div><!-- end col-lg-10 -->
         </div><!-- end container -->
@@ -924,7 +289,6 @@
             <div class="container">
                 <div class="text-center section-heading">
                     <h2 class="pb-3 section__title theme-font-2">Don't waste your valuable time or money</h2>
-                    <p class="section__desc">Only Aduca has all the critical factors to deliver real results</p>
                 </div><!-- end section-heading -->
                 <div class="row pt-50px">
                     <div class="col-lg-3 responsive-column-half">
@@ -964,7 +328,7 @@
                             </div>
                             <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Get real employable
                                 skills</h3>
-                            <p class="info__text">There are many variations of passages of Lorem Ipsum available
+                            <p class="info__text">Master skills, unlock opportunities.
                             <p>
                         </div><!-- end info-box -->
                     </div><!-- end col-lg-3 -->
@@ -1014,7 +378,7 @@
                             </div>
                             <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Project-based, active
                                 learning</h3>
-                            <p class="info__text">There are many variations of passages of Lorem Ipsum available
+                            <p class="info__text">Learn by doing, <br />excel faster.
                             <p>
                         </div><!-- end info-box -->
                     </div><!-- end col-lg-3 -->
@@ -1056,7 +420,7 @@
                             </div>
                             <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">Learn on your schedule
                             </h3>
-                            <p class="info__text">There are many variations of passages of Lorem Ipsum available
+                            <p class="info__text">Flexibility empowers your growth.
                             <p>
                         </div><!-- end info-box -->
                     </div><!-- end col-lg-3 -->
@@ -1082,7 +446,7 @@
                             </div>
                             <h3 class="info__title theme-font-2 font-weight-bold fs-20 lh-28">The help you need, when
                                 you need it</h3>
-                            <p class="info__text">There are many variations of passages of Lorem Ipsum available
+                            <p class="info__text">Support available at every step.
                             <p>
                         </div><!-- end info-box -->
                     </div><!-- end col-lg-3 -->
@@ -1115,7 +479,7 @@
                             </svg>
                         </div>
                         <h4 class="mb-3 counter__title text-color-2 fs-30">100,000+</h4>
-                        <p class="counter__meta">Aduca graduations and <br> counting</p>
+                        <p class="counter__meta">ITEE graduations and <br> counting</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
@@ -1177,7 +541,7 @@
                             </svg>
                         </div>
                         <h4 class="mb-3 counter__title text-color-3 fs-30">220+</h4>
-                        <p class="counter__meta">Industry experts partnering <br> to build our content</p>
+                        <p class="counter__meta">Support available <br> at every step</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-4 -->
                 <div class="col-lg-4 responsive-column-half">
@@ -1225,7 +589,7 @@
                             </svg>
                         </div>
                         <h4 class="mb-3 counter__title text-color-4 fs-30">120+</h4>
-                        <p class="counter__meta">Enterprise customers <br> world-wide</p>
+                        <p class="counter__meta">Technical partners <br> supporting globally</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
@@ -1250,8 +614,8 @@
                     </p>
                 </div><!-- end section-heading -->
                 <div class="cat-btn-box mt-28px">
-                    <a href="admission.html" class="btn theme-btn">Explore Resources <i
-                            class="ml-1 la la-arrow-right icon"></i></a>
+                    <a href="https://lightboat.lightworks.co.jp/en-promotion" class="btn theme-btn">Explore Resources
+                        <i class="ml-1 la la-arrow-right icon"></i></a>
                 </div><!-- end cat-btn-box -->
             </div><!-- end cta-content-wrap -->
         </div><!-- end container -->
@@ -1259,179 +623,6 @@
     <!--======================================
         END CTA AREA
 ======================================-->
-
-    <!--================================
-         START TESTIMONIAL AREA
-=================================-->
-    <section class="testimonial-area section--padding">
-        <div class="container">
-            <div class="text-center section-heading">
-                <h2 class="section__title theme-font-2">Student Community Feedback</h2>
-            </div><!-- end section-heading -->
-            <div class="testimonial-carousel-3 owl-action-styled owl--action-styled mt-35px">
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-1.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Great courses!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-2.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Customer support!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-3.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Great courses!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-4.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Great courses!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-5.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Great courses!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div class="border shadow-none card card-item border-gray">
-                    <div class="card-body">
-                        <div class="mb-4 avatar-md">
-                            <img src="{{ asset('aduca/images/small-avatar-6.jpg') }}" alt="Testimonial avatar"
-                                class="rounded-full">
-                        </div>
-                        <h3 class="pb-2 card-title">Customer support!</h3>
-                        <p class="pb-4 card-text">
-                            My children and I LOVE Aduca! The courses are fantastic and the
-                            instructors are so fun and knowledgeable.
-                            I only wish we found it sooner.
-                        </p>
-                        <div class="section-block"></div>
-                        <h3 class="pt-4 card-title fs-18">Kevin Martin</h3>
-                        <div class="d-flex align-items-center">
-                            <span class="pr-2 lh-18">Student</span>
-                            <div class="review-stars">
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                                <span class="la la-star"></span>
-                            </div>
-                        </div>
-                    </div><!-- end card-body -->
-                </div><!-- end card -->
-            </div><!-- end testimonial-carousel-three -->
-        </div><!-- end container -->
-    </section><!-- end testimonial-area -->
-    <!--================================
-        END TESTIMONIAL AREA
-=================================-->
-
     <div class="section-block"></div>
 
     <!-- ================================
@@ -1446,7 +637,7 @@
         <span class="stroke-shape stroke-shape-6"></span>
         <div class="container">
             <div class="section-heading">
-                <h2 class="pb-4 section__title theme-font-2">Trusted by companies of all sizes</h2>
+                <h2 class="pb-4 section__title theme-font-2">In association with</h2>
             </div><!-- end section-heading -->
             <div class="pt-4 client-logo-carousel">
                 <a href="#" class="client-logo-item"><img src="{{ asset('aduca/images/sponsor-img.png') }}"
@@ -1473,14 +664,9 @@
         <div class="container">
             <div class="text-center cta-content-wrap">
                 <div class="section-heading">
-                    <h2 class="pb-4 section__title lh-50 theme-font-2">Give your team a faster way <br> to learn and
-                        apply new skills.</h2>
-                    <p class="section__desc">Get unlimited access to 5,000+ of Aduca’s top courses for your team.</p>
+                    <h2 class="pb-4 section__title lh-50 theme-font-2">Discover a faster way to <br> learn and grow
+                        personally</h2>
                 </div><!-- end section-heading -->
-                <div class="cat-btn-box mt-28px">
-                    <a href="for-business.html" class="btn theme-btn">Buy for my team <i
-                            class="ml-1 la la-arrow-right icon"></i></a>
-                </div><!-- end cat-btn-box -->
             </div><!-- end cta-content-wrap -->
         </div><!-- end container -->
     </section><!-- end cat-area -->
@@ -1496,47 +682,22 @@
             <div class="row">
                 <div class="col-lg-3 responsive-column-half">
                     <div class="footer-item">
-                        <a href="index.html">
-                            <img src="{{ asset('aduca/images/logo.png') }}" alt="footer logo" class="footer__logo">
-                        </a>
+                        <h3 class="fs-20 font-weight-semi-bold">Contact</h3>
                         <ul class="py-4 generic-list-item">
-                            <li><a href="tel:+1631237884">+163 123 7884</a></li>
-                            <li><a href="mailto:support@wbsite.com">support@website.com</a></li>
-                            <li>Melbourne, Australia, 105 South Park Avenue</li>
+                            <li><a href="tel:+880255006847">+8802 55006847</a></li>
+                            <li><a href="tel:+8801857321122">+88018 57321122</a></li>
+                            <li><a href="mailto:info@bditec.gov.bd">info@bditec.gov.bd</a></li>
+                            <li>Bangladesh Computer Council (BCC) <br /> ICT Tower (BCC Bhaban) <br /> Agargaon,
+                                Sher-e-Bangla
+                                Nagar <br /> Dhaka-1207</li>
                         </ul>
-                        <div class="w-auto select-container select-container-sm">
-                            <select class="select-container-select">
-                                <option value="1">English</option>
-                                <option value="2">Deutsch</option>
-                                <option value="3">Español</option>
-                                <option value="4">Français</option>
-                                <option value="5">Bahasa Indonesia</option>
-                                <option value="6">Bangla</option>
-                                <option value="7">日本語</option>
-                                <option value="8">한국어</option>
-                                <option value="9">Nederlands</option>
-                                <option value="10">Polski</option>
-                                <option value="11">Português</option>
-                                <option value="12">Română</option>
-                                <option value="13">Русский</option>
-                                <option value="14">ภาษาไทย</option>
-                                <option value="15">Türkçe</option>
-                                <option value="16">中文(简体)</option>
-                                <option value="17">中文(繁體)</option>
-                                <option value="17">Hindi</option>
-                            </select>
-                        </div>
                     </div><!-- end footer-item -->
                 </div><!-- end col-lg-3 -->
                 <div class="col-lg-3 responsive-column-half">
                     <div class="footer-item">
                         <h3 class="fs-20 font-weight-semi-bold">Company</h3>
                         <ul class="pt-4 generic-list-item">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="#">Become a Teacher</a></li>
-                            <li><a href="for-business.html">Aduca for Business</a></li>
-                            <li><a href="#">Careers</a></li>
+                            <li><a href="https://lightboat.lightworks.co.jp/en-promotion">Become a Learner</a></li>
                         </ul>
                     </div><!-- end footer-item -->
                 </div><!-- end col-lg-3 -->
@@ -1544,11 +705,7 @@
                     <div class="footer-item">
                         <h3 class="fs-20 font-weight-semi-bold">Links</h3>
                         <ul class="pt-4 generic-list-item">
-                            <li><a href="#">News & Blog</a></li>
-                            <li><a href="#">Library</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Affiliate</a></li>
+                            <li><a href="https://ictd.gov.bd/">ICTD</a></li>
                         </ul>
                     </div><!-- end footer-item -->
                 </div><!-- end col-lg-3 -->
@@ -1556,11 +713,7 @@
                     <div class="footer-item">
                         <h3 class="fs-20 font-weight-semi-bold">Support</h3>
                         <ul class="pt-4 generic-list-item">
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Sitemap</a></li>
-                            <li><a href="#">Featured courses</a></li>
-                            <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="https://bditec.gov.bd/">BDITEC</a></li>
                         </ul>
                     </div><!-- end footer-item -->
                 </div><!-- end col-lg-3 -->
@@ -1571,17 +724,10 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <p class="copy-desc">&copy; 2021 Aduca. All Rights Reserved. by <a
-                                href="https://techydevs.com/">TechyDevs</a></p>
+                        <p class="copy-desc">&copy; 2024 BCC. All Rights Reserved by <a
+                                href="https://bcc.gov.bd/">Bangladesh Computer Council</a></p>
                     </div><!-- end col-lg-6 -->
-                    <div class="col-lg-6">
-                        <ul class="text-right social-icons social-icons-styled social--icons-styled">
-                            <li class="mr-1"><a href="#"><i class="la la-facebook"></i></a></li>
-                            <li class="mr-1"><a href="#"><i class="la la-twitter"></i></a></li>
-                            <li class="mr-1"><a href="#"><i class="la la-instagram"></i></a></li>
-                            <li class="mr-1"><a href="#"><i class="la la-linkedin"></i></a></li>
-                        </ul>
-                    </div><!-- end col-lg-6 -->
+
                 </div><!-- end row -->
             </div><!-- end container -->
         </div><!-- end copyright-content -->
@@ -1595,193 +741,6 @@
         <i class="la la-arrow-up" title="Go top"></i>
     </div>
     <!-- end scroll top -->
-
-    <div class="tooltip_templates">
-        <div id="tooltip_content_1">
-            <div class="card card-item">
-                <div class="card-body">
-                    <p class="pb-2 card-text">By <a href="teacher-detail.html">Jose Portilla</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">The Business Intelligence Analyst
-                            Course 2021</a></h5>
-                    <div class="pb-1 d-flex align-items-center">
-                        <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
-                        <p class="text-success fs-14 font-weight-medium">Updated<span
-                                class="pl-1 font-weight-bold">November 2020</span></p>
-                    </div>
-                    <ul
-                        class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>23 total hours</li>
-                        <li>All Levels</li>
-                    </ul>
-                    <p class="pt-1 card-text fs-14 lh-22">The skills you need to become a BI Analyst - Statistics,
-                        Database theory, SQL, Tableau – Everything is included</p>
-                    <ul class="py-3 generic-list-item fs-14">
-                        <li><i class="mr-1 text-black la la-check"></i> Become an expert in Statistics, SQL, Tableau,
-                            and problem solving</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Boost your resume with in-demand skills</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Gather, organize, analyze and visualize data
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
-                        <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card -->
-        </div>
-    </div><!-- end tooltip_templates -->
-    <div class="tooltip_templates">
-        <div id="tooltip_content_2">
-            <div class="card card-item">
-                <div class="card-body">
-                    <p class="pb-2 card-text">By <a href="teacher-detail.html">Jose Portilla</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">Ultimate Adobe Photoshop Training:
-                            From Beginner to Pro</a></h5>
-                    <div class="pb-1 d-flex align-items-center">
-                        <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
-                        <p class="text-success fs-14 font-weight-medium">Updated<span
-                                class="pl-1 font-weight-bold">November 2020</span></p>
-                    </div>
-                    <ul
-                        class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>23 total hours</li>
-                        <li>All Levels</li>
-                    </ul>
-                    <p class="pt-1 card-text fs-14 lh-22">The skills you need to become a BI Analyst - Statistics,
-                        Database theory, SQL, Tableau – Everything is included</p>
-                    <ul class="py-3 generic-list-item fs-14">
-                        <li><i class="mr-1 text-black la la-check"></i> Become an expert in Statistics, SQL, Tableau,
-                            and problem solving</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Boost your resume with in-demand skills</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Gather, organize, analyze and visualize data
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
-                        <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card -->
-        </div>
-    </div><!-- end tooltip_templates -->
-    <div class="tooltip_templates">
-        <div id="tooltip_content_3">
-            <div class="card card-item">
-                <div class="card-body">
-                    <p class="pb-2 card-text">By <a href="teacher-detail.html">Jose Portilla</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">The Complete WordPress Website
-                            Business Course</a></h5>
-                    <div class="pb-1 d-flex align-items-center">
-                        <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
-                        <p class="text-success fs-14 font-weight-medium">Updated<span
-                                class="pl-1 font-weight-bold">November 2020</span></p>
-                    </div>
-                    <ul
-                        class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>23 total hours</li>
-                        <li>All Levels</li>
-                    </ul>
-                    <p class="pt-1 card-text fs-14 lh-22">The skills you need to become a BI Analyst - Statistics,
-                        Database theory, SQL, Tableau – Everything is included</p>
-                    <ul class="py-3 generic-list-item fs-14">
-                        <li><i class="mr-1 text-black la la-check"></i> Become an expert in Statistics, SQL, Tableau,
-                            and problem solving</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Boost your resume with in-demand skills</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Gather, organize, analyze and visualize data
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
-                        <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card -->
-        </div>
-    </div><!-- end tooltip_templates -->
-    <div class="tooltip_templates">
-        <div id="tooltip_content_4">
-            <div class="card card-item">
-                <div class="card-body">
-                    <p class="pb-2 card-text">By <a href="teacher-detail.html">Jose Portilla</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">The Ultimate Drawing Course - Beginner
-                            to Advanced</a></h5>
-                    <div class="pb-1 d-flex align-items-center">
-                        <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
-                        <p class="text-success fs-14 font-weight-medium">Updated<span
-                                class="pl-1 font-weight-bold">November 2020</span></p>
-                    </div>
-                    <ul
-                        class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>23 total hours</li>
-                        <li>All Levels</li>
-                    </ul>
-                    <p class="pt-1 card-text fs-14 lh-22">The skills you need to become a BI Analyst - Statistics,
-                        Database theory, SQL, Tableau – Everything is included</p>
-                    <ul class="py-3 generic-list-item fs-14">
-                        <li><i class="mr-1 text-black la la-check"></i> Become an expert in Statistics, SQL, Tableau,
-                            and problem solving</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Boost your resume with in-demand skills</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Gather, organize, analyze and visualize data
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
-                        <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card -->
-        </div>
-    </div><!-- end tooltip_templates -->
-    <div class="tooltip_templates">
-        <div id="tooltip_content_5">
-            <div class="card card-item">
-                <div class="card-body">
-                    <p class="pb-2 card-text">By <a href="teacher-detail.html">Jose Portilla</a></p>
-                    <h5 class="pb-1 card-title"><a href="course-details.html">The Complete Digital Marketing Course
-                            - 12 Courses in 1</a></h5>
-                    <div class="pb-1 d-flex align-items-center">
-                        <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
-                        <p class="text-success fs-14 font-weight-medium">Updated<span
-                                class="pl-1 font-weight-bold">November 2020</span></p>
-                    </div>
-                    <ul
-                        class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
-                        <li>23 total hours</li>
-                        <li>All Levels</li>
-                    </ul>
-                    <p class="pt-1 card-text fs-14 lh-22">The skills you need to become a BI Analyst - Statistics,
-                        Database theory, SQL, Tableau – Everything is included</p>
-                    <ul class="py-3 generic-list-item fs-14">
-                        <li><i class="mr-1 text-black la la-check"></i> Become an expert in Statistics, SQL, Tableau,
-                            and problem solving</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Boost your resume with in-demand skills</li>
-                        <li><i class="mr-1 text-black la la-check"></i> Gather, organize, analyze and visualize data
-                        </li>
-                    </ul>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
-                        <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist">
-                            <i class="la la-heart-o"></i>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card -->
-        </div>
-    </div><!-- end tooltip_templates -->
-
 
     <!-- template js files -->
     <script src="{{ asset('aduca/js/jquery-3.4.1.min.js') }}"></script>

@@ -81,4 +81,10 @@ class ExamineeDashboardController extends Controller
     {
         //
     }
+
+    public function home()
+    {
+        $examFees = IteeExamFee::with(['exam_type', 'exam_category'])->get();
+        return view('examinee.home', compact('examFees'));
+    }
 }

@@ -50,16 +50,17 @@ use App\Http\Controllers\ITEECourseOutlineController;
 use App\Http\Controllers\VehicleManagementController;
 use App\Http\Controllers\ITEEExamApplicationController;
 
-Route::get('/', function () {
-    //want to remove to fit examinee routes
-    // if (auth()->check()) {
-    //     return redirect()->route('dashboard');
-    // } else {
-    //     return redirect()->route('login');
-    // }
+// Route::get('/', function () {
+//     want to remove to fit examinee routes
+//     if (auth()->check()) {
+//         return redirect()->route('dashboard');
+//     } else {
+//         return redirect()->route('login');
+//     }
+//     return view('examinee.home');
+// });
 
-    return view('examinee.home');
-});
+Route::get('/', [ExamineeDashboardController::class, 'home'])->name('examinee.home');
 
 //make dashboard route to fit examinee
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -338,6 +339,7 @@ Route::middleware('auth')->group(function () {
 
     // ITEE Exam Examinee Part Dashboard
     Route::prefix('/examinee')->name('examinee.')->group(function () {
+        Route::get('/profile', [ExamineeDashboardController::class, 'profile'])->name('profile');
         Route::get('/index', [ExamineeDashboardController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [ExamineeDashboardController::class, 'edit'])->name('enroll');
         Route::post('/{id}', [ExamineeDashboardController::class, 'update'])->name('enrollment');

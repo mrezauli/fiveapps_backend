@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
 
     //modify default auth register routes to fit examinee
-    Route::get('examinee/register', [RegisteredUserController::class, 'create'])->name('examinee.register');
-    Route::post('examinee/register', [RegisteredUserController::class, 'store'])->name('examinee.store');
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

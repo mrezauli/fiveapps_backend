@@ -36,8 +36,7 @@
                                     <i class="fa fa-bell animate-wiggle text-blue-800"></i>
                                     <div>
                                         <p class="text-sm font-bold"> {{ $notification->data['message'] }} </p>
-                                        {{-- <p class="text-xs">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, quidem asdgas dga sdgasd g asdgkja gas dg asdh gads.</p> --}}
-                                    </div>
+                                        </div>
                                 </div>
                                 <div>
                                     {{-- <p class="text-xs text-slate-600">2 min ago</p> --}}
