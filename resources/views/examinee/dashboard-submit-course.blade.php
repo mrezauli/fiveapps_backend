@@ -34,7 +34,7 @@
                                     <div class="w-auto select-container">
                                         <!-- Hidden Input Field to Hold the Value -->
                                         <input type="hidden" id="itee_exam_category_id" name="itee_exam_category_id"
-                                            value="{{ $examFee->exam_category->id }}">
+                                            value="{{ $examFee->exam_category->id }}" required>
                                         <label for="itee_exam_category_id_display" class="label-text">Select a
                                             Exam Category</label>
                                         <select id="itee_exam_category_id_display" name="itee_exam_category_id_display"
@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <input type="hidden" id="itee_exam_type_id" name="itee_exam_type_id"
-                                            value="{{ $examFee->exam_type->id }}">
+                                            value="{{ $examFee->exam_type->id }}" required>
                                         <label for="itee_exam_type_id_display" class="label-text">Select a
                                             Exam Type</label>
                                         <select id="itee_exam_type_id_display" name="itee_exam_type_id_display"

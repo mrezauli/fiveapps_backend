@@ -17,14 +17,15 @@
         @foreach ($examFees as $examFee)
             <div class="card card-item card-item-list-layout">
                 <div class="card-image">
-                    <a href="course-details.html" class="d-block">
+                    <a href="{{ route('examinee.enroll', $examFee->id) }}" class="d-block">
                         <?php $imageUrl = $examFee->exam_type->image; ?>
                         <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap"
                             style="width: 370px; height: 247px;">
                     </a>
                 </div><!-- end card-image -->
                 <div class="card-body">
-                    <h5 class="card-title"><a href="course-details.html">{{ $examFee->exam_type->name }}</a></h5>
+                    <h5 class="card-title"><a
+                            href="{{ route('examinee.enroll', $examFee->id) }}">{{ $examFee->exam_type->name }}</a></h5>
                     <p class="card-text"><a href="teacher-detail.html">{{ $examFee->exam_category->name }}</a></p>
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="text-black card-price font-weight-bold">BDT {{ $examFee->fee }} (৳)</p>

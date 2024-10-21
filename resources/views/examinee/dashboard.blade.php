@@ -134,16 +134,15 @@
                                                         <li>
                                                             <ul class="generic-list-item">
                                                                 <li>
-                                                                    <form method="POST"
+                                                                    <form method="POST" style="display: inline;"
                                                                         action="{{ route('logout') }}">
                                                                         @csrf
                                                                         <a href="{{ route('logout') }}"
-                                                                            onclick="event.preventDefault();
-                                                this.closest('form').submit();"
-                                                                            previewlistener="true">
+                                                                            id="logout-link">
                                                                             <i class="mr-1 la la-power-off"></i> Logout
                                                                         </a>
                                                                     </form>
+
                                                                 </li>
                                                                 <li>
                                                                     <div class="section-block"></div>
@@ -177,7 +176,7 @@
                             onclick="event.preventDefault();
                                             this.closest('form').submit();"
                             previewlistener="true">
-                            Log out</a>
+                            Logout</a>
                     </form>
                 </li>
             </ul>
@@ -325,6 +324,17 @@
     <script src="{{ asset('aduca/js/animated-skills.js') }}"></script>
     <script src="{{ asset('aduca/js/jquery.MultiFile.min.js') }}"></script>
     <script src="{{ asset('aduca/js/main.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutLink = document.getElementById('logout-link');
+            const logoutForm = logoutLink.closest('form');
+
+            logoutLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                logoutForm.submit();
+            });
+        });
+    </script>
 </body>
 
 </html>
