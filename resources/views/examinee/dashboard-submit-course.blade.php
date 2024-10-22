@@ -80,11 +80,11 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <input type="hidden" id="itee_exam_fees_id" name="itee_exam_fees_id"
-                                            value="{{ $examFee->id }}">
+                                            value="{{ $examFee->id }}" required>
                                         <label for="exam_fees_id_display" class="label-text">Select a
                                             Exam Fee</label>
                                         <select id="exam_fees_id_display" name="exam_fees_id_display"
-                                            class="select-container-select" disabled>
+                                            class="select-container-select" disabled required>
                                             <option value="">Select Exam Fee</option>
                                             @foreach ($fees as $fee)
                                                 <option value="{{ $fee->id }}"
@@ -129,8 +129,11 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <label class="label-text">Full Name</label>
-                                        <input class="pl-3 form-control form--control" type="text" name="full_name"
-                                            placeholder="Full Name" value="{{ $user->name }}">
+                                        <input maxlength="244" class="pl-3 form-control form--control" type="text"
+                                            name="full_name" placeholder="Full Name" value="{{ $user->name }}" required>
+                                        @error('full_name')
+                                            <span class="error-message" style="color:red;">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +142,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Email Address</label>
                                         <input class="pl-3 form-control form--control" type="email" name="email"
-                                            placeholder="Email Address" value="{{ $user->email }}">
+                                            required placeholder="Email Address" value="{{ $user->email }}">
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +154,7 @@
                                         <label class="label-text">Mobile Number</label>
                                         <input class="pl-3 form-control form--control" type="tel" id="phone"
                                             name="phone" pattern="^\01[0-9]{9}$" placeholder="01xxxxxxxxx" required
-                                            value="{{ $user->phone }}">
+                                            maxlength="244" value="{{ $user->phone }}">
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +163,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Date of Birth:</label>
                                         <input class="pl-3 form-control form--control" max="2005-12-31" type="date"
-                                            id="dob" name="dob" required>
+                                            id="dob" name="dob" required maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +187,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">LinkedIn Profile</label>
                                         <input class="pl-3 form-control form--control" type="text" name="linkedin"
-                                            placeholder="LinkedIn Profile">
+                                            placeholder="LinkedIn Profile" required maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +209,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Post Code</label>
                                         <input class="pl-3 form-control form--control" type="text" name="post_code"
-                                            placeholder="Post Code">
+                                            placeholder="Post Code" required maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +218,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Occupation</label>
                                         <input class="pl-3 form-control form--control" type="text" name="occupation"
-                                            placeholder="Occupation">
+                                            placeholder="Occupation" required maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +238,8 @@
                                                 </div> --}}
                                     <label class="label-text">Profile Picture</label>
                                     <div class="file-upload-wrap">
-                                        <input type="file" name="photo" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG"
+                                        <input type="file" name="photo"
+                                            accept=".jpg,.jpeg,.png,.gif,.JPG,.JPEG,.PNG,.GIF"
                                             class="multi file-upload-input">
                                         <span class="file-upload-text"><i class="mr-2 la la-cloud-upload fs-18"></i>Drop
                                             file
@@ -278,7 +282,8 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Group or Subject Name</label>
                                         <input class="pl-3 form-control form--control" type="text" name="subject_name"
-                                            placeholder="Group (Science, Humanities) or Subject (CSE, EEE) Name">
+                                            placeholder="Group (Science, Humanities) or Subject (CSE, EEE) Name"
+                                            maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -289,7 +294,8 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Passing Year</label>
                                         <input class="pl-3 form-control form--control" type="number" min="1971"
-                                            max="2005" name="passing_year" placeholder="Passing Year">
+                                            max="2005" name="passing_year" placeholder="Passing Year"
+                                            maxlength="244" required>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +304,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Institute</label>
                                         <input class="pl-3 form-control form--control" type="text""
-                                            name="institute_name" placeholder="Institute">
+                                            name="institute_name" placeholder="Institute" required maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -309,7 +315,8 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Result</label>
                                         <input class="pl-3 form-control form--control" type="number" min="2.00"
-                                            max="4.00" step="0.01" name="result" placeholder="Result">
+                                            max="4.00" step="0.01" name="result" placeholder="Result" required
+                                            maxlength="244">
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +324,7 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <label class="label-text">Previous Passer ID (if any)</label>
-                                        <input class="pl-3 form-control form--control" type="text"
+                                        <input class="pl-3 form-control form--control" type="text" maxlength="244"
                                             name="previous_passing_id" placeholder="Previous Passer ID (if any)">
                                     </div>
                                 </div>

@@ -74,10 +74,10 @@ class ExamineeDashboardController extends Controller
             'itee_venue_id' => 'required|integer',
             'itee_exam_category_id' => 'required|integer',
             'itee_exam_type_id' => 'required|integer',
-            'exam_fees' => 'required|string|max:244',
-            'fee_id' => 'required|integer',
+            'exam_fees' => 'required|string|max:244', //need to fix
+            'fee_id' => 'required|integer', //need to fix
             'itee_book_id' => 'required|string',
-            'itee_book_fees' => 'required|string|max:244',
+            'itee_book_fees' => 'required|string|max:244', //need to fix
             'full_name' => 'required|string|max:244',
             'email' => 'required|email',
             'phone' => 'required|string|max:244',
@@ -98,17 +98,10 @@ class ExamineeDashboardController extends Controller
             // 'payment'                   => 'required|string|max:244',
             // 'status'    => 'required|string|max:244',
         ]);
-        dd($id);
-
-        // 1 3
-        // 1|3
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => false,
-                'message' => 'validation error',
-                'errors' => $validator->errors()
-            ], 422);
+            // Redirect back with validation errors and old input
+            return redirect()->back()->withErrors($validator)->withInput();
         }
         $photo = '';
         if ($request->hasFile('photo')) {
