@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\IteeBook;
 use App\Models\IteeVenue;
 use App\Models\IteeExamFee;
+use App\Helper\CustomHelper;
 use App\Models\IteeExamType;
 use Illuminate\Http\Request;
 use App\Models\IteeExamCategory;
+use App\Models\IteeExamRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -74,10 +76,11 @@ class ExamineeDashboardController extends Controller
             'itee_venue_id' => 'required|integer',
             'itee_exam_category_id' => 'required|integer',
             'itee_exam_type_id' => 'required|integer',
-            'exam_fees' => 'required|string|max:244', //need to fix
-            'fee_id' => 'required|integer', //need to fix
+            //'exam_fees' => 'required|string|max:244', //need to fix
+            //'fee_id' => 'required|integer', //need to fix
+            'itee_exam_fees_id' => 'required|integer', //need to fix
             'itee_book_id' => 'required|string',
-            'itee_book_fees' => 'required|string|max:244', //need to fix
+            //'itee_book_fees' => 'required|string|max:244', //need to fix
             'full_name' => 'required|string|max:244',
             'email' => 'required|email',
             'phone' => 'required|string|max:244',
@@ -87,9 +90,9 @@ class ExamineeDashboardController extends Controller
             'post_code' => 'required|string|max:244',
             'occupation' => 'required|string|max:244',
             'linkedin' => 'required|string|max:244',
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:5300',
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:5300', //need to fix
             'education_qualification' => 'required|string|max:244',
-            'discipline' => 'nullable|string|max:244',
+            //'discipline' => 'nullable|string|max:244', //need to fix
             'subject_name' => 'nullable|string|max:244',
             'passing_year' => 'required|string|max:244',
             'institute_name' => 'required|string|max:244',
@@ -108,16 +111,16 @@ class ExamineeDashboardController extends Controller
             $photo = CustomHelper::storeImage($request->file('photo'), '/itee/photo/');
         }
 
-        try {
-            // ------------------
-            //
-            // ------------------
+
+        //try {
             $venue = IteeVenue::find($request->itee_venue_id);
             $exam_type = IteeExamType::find($request->itee_exam_type_id);
             $examine_id = $this->generateUniqueExamineeId(str_starts_with($exam_type->name, 'IP') ? 'IP' : 'FE');
+            dd('f');
+
 
             if(IteeExamRegistration::where('full_name', $request->full_name)->where('dob', $request->dob)->first()) {
-                throw new Exception('Person is already registered for an exam previously.');
+                return redirect()->back()->withErrors($validator)->withInput();;
             }
             $examRegistration = IteeExamRegistration::create([
                 'examine_id' => $examine_id,
@@ -150,20 +153,21 @@ class ExamineeDashboardController extends Controller
                 'status' => 0,
             ]);
 
-            $notify_message = "New exam registration submitted";
-            $users = User::whereHas('roles', function ($query) {
-                $query->where('name', "ITEE Admin");
-            })->get();
-            Notification::send($users, new AllNotification($notify_message));
-            $responseData = ['exam_registration_id' => $examRegistration->id, 'examine_id' => $examine_id];
-            return response()->json(['status' => true, 'message' => 'Exam Registration Successfully', 'records' => $responseData], 200);
-        } catch (\Throwable $th) {
-            if ($request->hasFile('photo') && $photo) {
-                $photo = CustomHelper::deleteFile($photo);
-            }
+            // $notify_message = "New exam registration submitted";
+            // $users = User::whereHas('roles', function ($query) {
+            //     $query->where('name', "ITEE Admin");
+            // })->get();
+            // Notification::send($users, new AllNotification($notify_message));
+            // $responseData = ['exam_registration_id' => $examRegistration->id, 'examine_id' => $examine_id];
+            //return response()->json(['status' => true, 'message' => 'Exam Registration Successfully', 'records' => $responseData], 200);
+            return view('examinee.dashboard-courses');
+        // } catch (\Throwable $th) {
+        //     if ($request->hasFile('photo') && $photo) {
+        //         $photo = CustomHelper::deleteFile($photo);
+        //     }
 
-            return response()->json(['status' => true, 'message' => 'Something is error.', 'records' => [$th->getMessage()]], 200);
-        }
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
 
     }
 
@@ -179,5 +183,19 @@ class ExamineeDashboardController extends Controller
     {
         $examFees = IteeExamFee::with(['exam_type', 'exam_category'])->get();
         return view('examinee.home', compact('examFees'));
+    }
+
+    private function generateUniqueExamineeId($prefix)
+    {
+        $idx = $prefix;
+        $idx .= date('y');
+        $currentMonth = intval(date('m'));
+        $idx .= $currentMonth > 4 && $currentMonth < 11 ? 2 : 1;
+        $rnd = rand(111111, 999999);
+        $idx .= substr($rnd, 0, 5);
+        if (IteeExamRegistration::where('examine_id', $idx)->exists())
+            $idx = $this->generateUniqueExamineeId($prefix);
+
+        return $idx;
     }
 }
