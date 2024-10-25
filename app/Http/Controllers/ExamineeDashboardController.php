@@ -76,8 +76,6 @@ class ExamineeDashboardController extends Controller
             'itee_venue_id' => 'required|integer',
             'itee_exam_category_id' => 'required|integer',
             'itee_exam_type_id' => 'required|integer',
-            //'exam_fees' => 'required|string|max:244', //need to fix
-            //'fee_id' => 'required|integer', //need to fix
             'itee_exam_fees_id' => 'required|integer', //need to fix
             'itee_book_id' => 'required|string',
             //'itee_book_fees' => 'required|string|max:244', //need to fix
@@ -116,12 +114,12 @@ class ExamineeDashboardController extends Controller
             $venue = IteeVenue::find($request->itee_venue_id);
             $exam_type = IteeExamType::find($request->itee_exam_type_id);
             $examine_id = $this->generateUniqueExamineeId(str_starts_with($exam_type->name, 'IP') ? 'IP' : 'FE');
-            dd('f');
 
 
             if(IteeExamRegistration::where('full_name', $request->full_name)->where('dob', $request->dob)->first()) {
                 return redirect()->back()->withErrors($validator)->withInput();;
             }
+
             $examRegistration = IteeExamRegistration::create([
                 'examine_id' => $examine_id,
                 'user_id' => auth()->user()->id,
@@ -129,10 +127,10 @@ class ExamineeDashboardController extends Controller
                 'itee_exam_category_id' => $request->itee_exam_category_id,
                 'itee_exam_type_id' => $request->itee_exam_type_id,
                 'exam_center' => $venue->name,
-                'exam_fees' => $request->exam_fees,
-                'exam_fees_id' => $request->fee_id,
-                'itee_book_id' => explode('|', $request->itee_book_id),
-                'itee_book_fees' => $request->itee_book_fees,
+                'exam_fees' => IteeExamFee::find($request->itee_exam_fees_id)?->pluck('fee')->first(),
+                'exam_fees_id' => $request->itee_exam_fees_id,
+                'itee_book_id' => $request->itee_book_id,
+                'itee_book_fees' => IteeBook::find($request->itee_book_id)?->pluck('book_price')->first(),
                 'full_name' => $request->full_name,
                 'email' => $request->email,
                 'phone' => $request->phone,
@@ -160,7 +158,7 @@ class ExamineeDashboardController extends Controller
             // Notification::send($users, new AllNotification($notify_message));
             // $responseData = ['exam_registration_id' => $examRegistration->id, 'examine_id' => $examine_id];
             //return response()->json(['status' => true, 'message' => 'Exam Registration Successfully', 'records' => $responseData], 200);
-            return view('examinee.dashboard-courses');
+            return view('examinee.dashboard');
         // } catch (\Throwable $th) {
         //     if ($request->hasFile('photo') && $photo) {
         //         $photo = CustomHelper::deleteFile($photo);

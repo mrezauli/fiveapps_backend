@@ -116,7 +116,7 @@
                                         <label for="itee_book_id" class="label-text">Select
                                             Exam Book</label>
                                         <select id="itee_book_id" name="itee_book_id" class="select-container-select"
-                                            required multiple>
+                                            required>
                                             @foreach ($books as $book)
                                                 <option value="{{ $book->id }}"
                                                     {{ old('itee_book_id') == $book->id ? 'selected' : '' }}>
