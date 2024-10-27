@@ -1,15 +1,6 @@
 @extends('examinee.dashboard')
 @section('content')
-    <div class="mb-5 section-block">
-        @if (isset($examFee))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Success!</strong> Your course in in review!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
-    </div>
+
     <div class="pt-5 mb-5 dashboard-heading">
         <h3 class="fs-22 font-weight-semi-bold">All Exams</h3>
     </div>

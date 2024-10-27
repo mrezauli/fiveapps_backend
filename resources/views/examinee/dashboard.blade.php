@@ -270,8 +270,21 @@
             <div class="mb-4 ml-3 dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent">
                 <i class="mr-1 la la-bars"></i> Dashboard Nav
             </div>
-            <div class="container-fluid">
-                @yield('content') <!-- Dynamic content will be injected here -->
+            <div class="container-fluid" style="display: flex;flex-direction: column;min-height: 100vh;">
+                <div style="flex: 1;">
+                    <div class="mb-5 section-block">
+                        @if (isset($message))
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>{{ $message }}</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                    </div>
+                    @yield('content') <!-- Dynamic content will be injected here -->
+                </div>
+
                 <div class="pb-4 row align-items-center dashboard-copyright-content">
                     <div class="col-lg-6">
                         <p class="copy-desc">&copy; 2024 BCC. All Rights Reserved by <a
@@ -279,6 +292,7 @@
                     </div><!-- end col-lg-6 -->
                 </div><!-- end row -->
             </div><!-- end container-fluid -->
+
         </div><!-- end dashboard-content-wrap -->
     </section><!-- end dashboard-area -->
     <!-- ================================
@@ -290,26 +304,6 @@
         <i class="la la-arrow-up" title="Go top"></i>
     </div>
     <!-- end scroll top -->
-
-    <!-- Modal -->
-    <div class="modal fade modal-container" id="itemDeleteModal" tabindex="-1" role="dialog"
-        aria-labelledby="itemDeleteModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="text-center modal-body">
-                    <span class="la la-exclamation-circle fs-60 text-warning"></span>
-                    <h4 class="pt-2 pb-1 modal-title fs-19 font-weight-semi-bold" id="itemDeleteModalTitle">Your item
-                        will be deleted permanently!</h4>
-                    <p>Are you sure you want to delete your item?</p>
-                    <div class="pt-4 btn-box">
-                        <button type="button" class="mr-3 btn font-weight-medium"
-                            data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn theme-btn theme-btn-sm lh-30">Ok, Delete</button>
-                    </div>
-                </div><!-- end modal-body -->
-            </div><!-- end modal-content -->
-        </div><!-- end modal-dialog -->
-    </div><!-- end modal -->
 
     <!-- template js files -->
     <script src="{{ asset('aduca/js/jquery-3.4.1.min.js') }}"></script>

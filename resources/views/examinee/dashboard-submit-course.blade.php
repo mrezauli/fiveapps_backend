@@ -94,7 +94,6 @@
                                     <div class="w-auto select-container">
                                         <input type="hidden" id="itee_exam_fees_id" name="itee_exam_fees_id"
                                             value="{{ $examFee->id }}" required>
-
                                         <label for="exam_fees_id_display" class="label-text">Select a
                                             Exam Fee</label>
                                         <select id="exam_fees_id_display" name="exam_fees_id_display"
@@ -113,10 +112,11 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <div class="w-auto select-container">
-                                        <label for="itee_book_id" class="label-text">Select
+                                        <input type="hidden" id="itee_book_id" name="itee_book_id" required>
+                                        <label for="itee_book_id_display" class="label-text">Select
                                             Exam Book</label>
-                                        <select id="itee_book_id" name="itee_book_id" class="select-container-select"
-                                            required>
+                                        <select id="itee_book_id_display" name="itee_book_id_display[]"
+                                            class="select-container-select" required multiple>
                                             @foreach ($books as $book)
                                                 <option value="{{ $book->id }}"
                                                     {{ old('itee_book_id') == $book->id ? 'selected' : '' }}>
@@ -374,31 +374,20 @@
                 </div><!-- end col-lg-12 -->
             </div>
         </div><!-- end card-body -->
-        <div class="card card-item">
-            <div class="card-body">
-                <h3 class="pb-2 fs-22 font-weight-semi-bold">Payment info</h3>
-                <div class="divider"><span></span></div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <div class="w-auto select-container">
-                                        <label class="label-text">Transaction ID</label>
-                                        <input class="pl-3 form-control form--control" type="text"
-                                            name="transaction_id" placeholder="Transaction ID"
-                                            value="{{ old('previous_passing_id') }}">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end col-lg-12 -->
-            </div>
-        </div><!-- end card-body -->
         <div class="pb-4 course-submit-btn-box">
             <button class="btn theme-btn" type="submit">Submit Course</button>
         </div>
     </form>
+    <script>
+        document.getElementById('itee_book_id_display').addEventListener('change', function() {
+            // Get the selected options as an array of values
+            const selectedValues = Array.from(this.selectedOptions).map(option => option.value);
+
+            // Join the array into a comma-separated string
+            const selectedString = selectedValues.join('|');
+
+            // Display the string in the input field
+            document.getElementById('itee_book_id').value = selectedString;
+        });
+    </script>
 @endsection

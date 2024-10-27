@@ -108,13 +108,9 @@ class ExamineeDashboardController extends Controller
         if ($request->hasFile('photo')) {
             $photo = CustomHelper::storeImage($request->file('photo'), '/itee/photo/');
         }
-
-
-        //try {
             $venue = IteeVenue::find($request->itee_venue_id);
             $exam_type = IteeExamType::find($request->itee_exam_type_id);
             $examine_id = $this->generateUniqueExamineeId(str_starts_with($exam_type->name, 'IP') ? 'IP' : 'FE');
-
 
             if(IteeExamRegistration::where('full_name', $request->full_name)->where('dob', $request->dob)->first()) {
                 return redirect()->back()->withErrors($validator)->withInput();;
@@ -129,8 +125,8 @@ class ExamineeDashboardController extends Controller
                 'exam_center' => $venue->name,
                 'exam_fees' => IteeExamFee::find($request->itee_exam_fees_id)?->pluck('fee')->first(),
                 'exam_fees_id' => $request->itee_exam_fees_id,
-                'itee_book_id' => $request->itee_book_id,
-                'itee_book_fees' => IteeBook::find($request->itee_book_id)?->pluck('book_price')->first(),
+                'itee_book_id' => explode('|', $request->itee_book_id),
+                'itee_book_fees' => IteeBook::whereIn('id', explode('|', $request->itee_book_id))->sum('book_price'),
                 'full_name' => $request->full_name,
                 'email' => $request->email,
                 'phone' => $request->phone,
@@ -151,22 +147,9 @@ class ExamineeDashboardController extends Controller
                 'status' => 0,
             ]);
 
-            // $notify_message = "New exam registration submitted";
-            // $users = User::whereHas('roles', function ($query) {
-            //     $query->where('name', "ITEE Admin");
-            // })->get();
-            // Notification::send($users, new AllNotification($notify_message));
-            // $responseData = ['exam_registration_id' => $examRegistration->id, 'examine_id' => $examine_id];
-            //return response()->json(['status' => true, 'message' => 'Exam Registration Successfully', 'records' => $responseData], 200);
-            return view('examinee.dashboard');
-        // } catch (\Throwable $th) {
-        //     if ($request->hasFile('photo') && $photo) {
-        //         $photo = CustomHelper::deleteFile($photo);
-        //     }
+            $message = 'Success! Your course in in review!';
 
-        //     return redirect()->back()->withErrors($validator)->withInput();
-        // }
-
+            return view('examinee.dashboard', compact('message'));
     }
 
     /**
