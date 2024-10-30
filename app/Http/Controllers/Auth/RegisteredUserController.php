@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'user_type' => 'itee_student',
             'active' => 0
         ]);
 
@@ -50,9 +51,6 @@ class RegisteredUserController extends Controller
         $user->assignRole('Examinee');
 
         Auth::login($user);
-
-        $user->assignRole('Examinee');
-
 
         //making separate dashboard for examinee
         //return redirect(route('dashboard', absolute: false));

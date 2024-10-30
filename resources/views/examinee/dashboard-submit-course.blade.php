@@ -1,4 +1,4 @@
-@extends('examinee.dashboard')
+@extends('examinee.layout')
 @section('content')
     <div class="mb-5 dashboard-heading">
         <h3 class="fs-22 font-weight-semi-bold">Submit Course</h3>

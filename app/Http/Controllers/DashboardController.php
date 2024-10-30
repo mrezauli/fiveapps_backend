@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\CustomHelper;
-use App\Models\DriverWithCar;
+use Auth;
+use Exception;
+use Carbon\Carbon;
 use App\Models\Trip;
 use App\Models\User;
-use App\Models\VlmStaffHierarchy;
-use App\Notifications\AllNotification;
-use Carbon\Carbon;
-use Exception;
+use App\Models\IteeExamFee;
+use App\Helper\CustomHelper;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Notification;
-use Auth;
-
+use App\Models\DriverWithCar;
+use App\Models\VlmStaffHierarchy;
+use App\Models\IteeExamRegistration;
 use function Laravel\Prompts\select;
+
+use Illuminate\Support\Facades\Hash;
+use App\Notifications\AllNotification;
+use Illuminate\Support\Facades\Notification;
 
 class DashboardController extends Controller
 {
@@ -44,8 +46,11 @@ class DashboardController extends Controller
             return redirect()->route('vm.cars.trip.index');
         } else if (CustomHelper::userRoleName(auth()->user()) == 'BKIICT Admin') {
             return redirect()->route('bkiict.course.index');
-        } else if (CustomHelper::userRoleName(auth()->user()) == 'Examinee') { // examinee dashboard
-            return view('examinee.dashboard');
+        } else if (CustomHelper::userRoleName(auth()->user()) == 'Examinee') {
+            $enrolledCourseCount = IteeExamRegistration::where('user_id', auth()->user()->id)->count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         } else {
             Auth::logout();
             return redirect('login')->with("error", "Wrong Credentials");

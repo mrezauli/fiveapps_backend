@@ -32,6 +32,7 @@ use App\Http\Controllers\PdfDownloadController;
 use App\Http\Controllers\VMCarAssignController;
 use App\Http\Controllers\BKIICTCenterController;
 use App\Http\Controllers\BKIICTCourseController;
+use App\Http\Controllers\ExamineeExamController;
 use App\Http\Controllers\ITEEExamTypeController;
 use App\Http\Controllers\IteeProgramsController;
 use App\Http\Controllers\ITEEStudentsController;
@@ -339,10 +340,16 @@ Route::middleware('auth')->group(function () {
 
     // ITEE Exam Examinee Part Dashboard
     Route::prefix('/examinee')->name('examinee.')->group(function () {
+        //other pages
         Route::get('/profile', [ExamineeDashboardController::class, 'profile'])->name('profile');
-        Route::get('/index', [ExamineeDashboardController::class, 'index'])->name('index');
-        Route::get('/edit/{id}', [ExamineeDashboardController::class, 'edit'])->name('enroll');
-        Route::post('/{id}', [ExamineeDashboardController::class, 'update'])->name('enrollment');
+        Route::get('/settings', [ExamineeDashboardController::class, 'settings'])->name('settings');
+        Route::post('/settings', [ExamineeDashboardController::class, 'settingsChange'])->name('settings.change');
+        Route::get('/enrolled', [ExamineeDashboardController::class, 'enrolled'])->name('enrolled');
+        Route::get('/unpaid', [ExamineeDashboardController::class, 'unpaid'])->name('unpaid');
+        //exam registration pages
+        Route::get('/index', [ExamineeExamController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [ExamineeExamController::class, 'edit'])->name('enroll');
+        Route::post('/{id}', [ExamineeExamController::class, 'update'])->name('enrollment');
         // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
         // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
         // Route::get('/delete/{id}', [IteeRecentEventsController::class, 'delete'])->middleware('role_or_permission:Super Admin|Delete Recent Events')->name('delete');
