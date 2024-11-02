@@ -48,14 +48,19 @@ class ExamineeDashboardController extends Controller
     public function enrolled()
     {
         $examRegs = IteeExamRegistration::with(['examType', 'category', 'fee'])->where('user_id', auth()->user()->id)->get();
-        //$examFees = IteeExamFee::with(['exam_type', 'exam_category'])->whereIn('id', $examFeesIds)->get();
         return view('examinee.dashboard-enrolled-courses', compact('examRegs'));
     }
 
     public function unpaid()
     {
-        $examFeesIds = IteeExamRegistration::where('user_id', auth()->user()->id)->where('user_id', auth()->user()->id)->get(['exam_fees_id']);
-        $examFees = IteeExamFee::with(['exam_type', 'exam_category'])->whereIn('id', $examFeesIds)->get();
-        return view('examinee.dashboard-enrolled-courses', compact('examFees'));
+        $examRegs = IteeExamRegistration::with(['examType', 'category', 'fee'])->where('user_id', auth()->user()->id)->where('payment', 'Unpaid')->get();
+        return view('examinee.dashboard-unpaid-courses', compact('examRegs'));
+    }
+
+    public function payHostedCheckout()
+    {
+        $examRegs = IteeExamRegistration::with(['examType', 'category', 'fee'])->where('user_id', auth()->user()->id)->where('payment', 'Unpaid')->get();
+        $totalExamFees = $examRegs->sum('exam_fees');
+        return view('examinee.exampleHosted', compact('examRegs', 'totalExamFees'));
     }
 }

@@ -124,7 +124,7 @@ class ExamineeExamController extends Controller
                 'itee_exam_category_id' => $request->itee_exam_category_id,
                 'itee_exam_type_id' => $request->itee_exam_type_id,
                 'exam_center' => $venue->name,
-                'exam_fees' => IteeExamFee::find($request->itee_exam_fees_id)?->pluck('fee')->first(),
+                'exam_fees' => IteeExamFee::where('id', $request->itee_exam_fees_id)->value('fee'),
                 'exam_fees_id' => $request->itee_exam_fees_id,
                 'itee_book_id' => explode('|', $request->itee_book_id),
                 'itee_book_fees' => IteeBook::whereIn('id', explode('|', $request->itee_book_id))->sum('book_price'),

@@ -256,6 +256,13 @@
                             <path
                                 d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
                         </svg> Enrolled Courses</a></li>
+                <li class="{{ Route::is('examinee.unpaid') ? 'page-active' : '' }}"><a
+                        href="{{ route('examinee.unpaid') }}"><svg class="mr-2" xmlns="http://www.w3.org/2000/svg"
+                            height="18px" viewBox="0 0 24 24" width="18px">
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path
+                                d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+                        </svg> Unpaid Courses</a></li>
                 <li class="{{ Route::is('examinee.settings') ? 'page-active' : '' }}"><a
                         href="{{ route('examinee.settings') }}"><svg class="mr-2"
                             xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px">

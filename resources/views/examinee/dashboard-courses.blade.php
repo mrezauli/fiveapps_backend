@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><a
                             href="{{ route('examinee.enroll', $examFee->id) }}">{{ $examFee->exam_type->name }}</a></h5>
-                    <p class="card-text"><a href="teacher-detail.html">{{ $examFee->exam_category->name }}</a></p>
+                    <p class="card-text">{{ $examFee->exam_category->name }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="text-black card-price font-weight-bold">BDT {{ $examFee->fee }} (৳)</p>
                         <div class="pl-3 card-action-wrap">

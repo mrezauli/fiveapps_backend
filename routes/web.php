@@ -50,6 +50,36 @@ use App\Http\Controllers\ExamineeDashboardController;
 use App\Http\Controllers\ITEECourseOutlineController;
 use App\Http\Controllers\VehicleManagementController;
 use App\Http\Controllers\ITEEExamApplicationController;
+use App\Http\Controllers\SslCommerzPaymentController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+// SSLCOMMERZ Start
+//Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+//Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/', function () {
 //     want to remove to fit examinee routes
@@ -350,6 +380,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/index', [ExamineeExamController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [ExamineeExamController::class, 'edit'])->name('enroll');
         Route::post('/{id}', [ExamineeExamController::class, 'update'])->name('enrollment');
+        // SSLCOMMERZ Start
+        Route::get('/pay/{id}', [ExamineeDashboardController::class, 'payHostedCheckout'])->name('pay.hosted.checkout');
+//Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
         // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
         // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
         // Route::get('/delete/{id}', [IteeRecentEventsController::class, 'delete'])->middleware('role_or_permission:Super Admin|Delete Recent Events')->name('delete');
