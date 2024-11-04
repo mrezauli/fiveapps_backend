@@ -81,10 +81,8 @@
                                                             </a>
                                                             <div class="ml-2">
                                                                 <h4><a href="{{ route('examinee.profile') }}"
-                                                                        class="text-black">{{ auth()->user()->name }}</a>
+                                                                        class="text-black">Profile</a>
                                                                 </h4>
-                                                                <span
-                                                                    class="d-block fs-14 lh-20">{{ auth()->user()->email }}</span>
                                                             </div>
                                                         </li>
                                                         <li>

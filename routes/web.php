@@ -65,15 +65,15 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 // SSLCOMMERZ Start
 //Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+//Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+
 //Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);
 Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 
@@ -381,16 +381,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', [ExamineeExamController::class, 'edit'])->name('enroll');
         Route::post('/{id}', [ExamineeExamController::class, 'update'])->name('enrollment');
         // SSLCOMMERZ Start
-        Route::get('/pay/{id}', [ExamineeDashboardController::class, 'payHostedCheckout'])->name('pay.hosted.checkout');
-//Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+        Route::get('/payment/{id}', [ExamineeDashboardController::class, 'payHostedCheckout'])->name('payment.hosted.checkout');
 
-Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
-//SSLCOMMERZ END
+        //Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+        //SSLCOMMERZ END
         // Route::get('/create', [IteeRecentEventsController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('create');
         // Route::post('/save', [IteeRecentEventsController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Recent Events')->name('store');
         // Route::get('/delete/{id}', [IteeRecentEventsController::class, 'delete'])->middleware('role_or_permission:Super Admin|Delete Recent Events')->name('delete');

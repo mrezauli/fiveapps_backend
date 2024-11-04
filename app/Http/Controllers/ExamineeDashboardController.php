@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IteeBook;
 use App\Models\IteeExamFee;
 use Illuminate\Http\Request;
 use App\Models\IteeExamRegistration;
@@ -57,10 +58,11 @@ class ExamineeDashboardController extends Controller
         return view('examinee.dashboard-unpaid-courses', compact('examRegs'));
     }
 
-    public function payHostedCheckout()
+    public function payHostedCheckout(string $id)
     {
-        $examRegs = IteeExamRegistration::with(['examType', 'category', 'fee'])->where('user_id', auth()->user()->id)->where('payment', 'Unpaid')->get();
-        $totalExamFees = $examRegs->sum('exam_fees');
-        return view('examinee.exampleHosted', compact('examRegs', 'totalExamFees'));
+        $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($id);
+        $books = IteeBook::whereIn('id', $examReg->itee_book_id)->get();
+        $totalBill = $examReg->exam_fees + $books->sum('book_price');
+        return view('examinee.exampleHosted', compact('examReg', 'totalBill', 'books'));
     }
 }

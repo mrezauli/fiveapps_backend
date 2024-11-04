@@ -77,6 +77,7 @@ class IteeExamRegistration extends Model
         return $this->belongsTo(IteeExamFee::class, 'exam_fees_id');
     }
 
+
     public function result()
     {
         return $this->hasOne(IteeExamResult::class, 'examine_id', 'examine_id');
