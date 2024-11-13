@@ -376,6 +376,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/settings', [ExamineeDashboardController::class, 'settingsChange'])->name('settings.change');
         Route::get('/enrolled', [ExamineeDashboardController::class, 'enrolled'])->name('enrolled');
         Route::get('/unpaid', [ExamineeDashboardController::class, 'unpaid'])->name('unpaid');
+        Route::get('/admit-card', [ExamineeDashboardController::class, 'admitCard'])->name('admit-card');
+        Route::get('/result', [ExamineeDashboardController::class, 'result'])->name('result');
         //exam registration pages
         Route::get('/index', [ExamineeExamController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [ExamineeExamController::class, 'edit'])->name('enroll');

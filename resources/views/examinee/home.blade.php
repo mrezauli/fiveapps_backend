@@ -517,8 +517,9 @@
             <div class="flex-wrap pt-3 btn-box d-flex align-items-center justify-content-center">
                 <div>
                     <p class="pb-2">Are you student?</p>
-                    <a href="{{ route('register') }}" class="btn theme-btn theme-btn-sm lh-24"><i
-                            class="mr-1 la la-file-text-o"></i>Start Learning</a>
+                    <a href="https://lightboat.lightworks.co.jp/en-promotion"
+                        class="btn theme-btn theme-btn-sm lh-24"><i class="mr-1 la la-file-text-o"></i>Start
+                        Learning</a>
                 </div>
             </div>
         </div><!-- end container -->

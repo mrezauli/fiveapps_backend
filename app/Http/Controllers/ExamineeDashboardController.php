@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\IteeBook;
 use App\Models\IteeExamFee;
 use Illuminate\Http\Request;
+use App\Models\IteeAdmitCardData;
+use Illuminate\Support\Facades\DB;
 use App\Models\IteeExamRegistration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,6 +58,28 @@ class ExamineeDashboardController extends Controller
     {
         $examRegs = IteeExamRegistration::with(['examType', 'category', 'fee'])->where('user_id', auth()->user()->id)->where('payment', 'Unpaid')->get();
         return view('examinee.dashboard-unpaid-courses', compact('examRegs'));
+    }
+
+    public function admitCard()
+    {
+        $admitCards = DB::table('itee_exam_registrations')
+                        ->leftJoin('itee_admit_card_data', 'itee_exam_registrations.examine_id', '=', 'itee_admit_card_data.examine_id')
+                        ->where('itee_exam_registrations.user_id', auth()->user()->id)
+                        ->whereNotNull('itee_exam_registrations.transaction_id')
+                        ->select('itee_exam_registrations.examine_id', 'itee_exam_registrations.full_name', 'itee_admit_card_data.id')
+                        ->get();
+        return view('examinee.dashboard-admit-card', compact('admitCards'));
+    }
+
+    public function result()
+    {
+        $results = DB::table('itee_exam_registrations')
+                        ->leftJoin('itee_exam_results', 'itee_exam_registrations.examine_id', '=', 'itee_exam_results.examine_id')
+                        ->where('itee_exam_registrations.user_id', auth()->user()->id)
+                        ->whereNotNull('itee_exam_registrations.transaction_id')
+                        ->select('itee_exam_results.examine_id', 'itee_exam_results.passer_id', 'itee_exam_results.name', 'itee_exam_results.morning_passer', 'itee_exam_results.afternoon_passer', 'itee_exam_results.passing_session', 'itee_exam_results.exam_type')
+                        ->get();
+        return view('examinee.dashboard-result', compact('results'));
     }
 
     public function payHostedCheckout(string $id)
