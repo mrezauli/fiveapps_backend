@@ -1,6 +1,5 @@
 @extends('examinee.layout')
 @section('content')
-
     <div class="pt-5 mb-5 dashboard-heading">
         <h3 class="fs-22 font-weight-semi-bold">All Exams</h3>
     </div>

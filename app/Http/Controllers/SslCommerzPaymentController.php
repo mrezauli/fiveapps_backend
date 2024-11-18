@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Models\User;
+use App\Models\IteeExamFee;
 use Illuminate\Http\Request;
 use App\Models\IteeExamRegistration;
 use App\Library\SslCommerz\SslCommerzNotification;
@@ -19,6 +21,7 @@ class SslCommerzPaymentController extends Controller
     {
         return view('exampleHosted');
     }
+    
     public function payViaAjax(Request $request)
     {
 
@@ -66,7 +69,7 @@ class SslCommerzPaymentController extends Controller
 
 
         #Before  going to initiate the payment order status need to update as Pending.
-        $update_product = DB::table('orders')
+        $update_product = DB::table('itee_orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
                 'name' => $post_data['cus_name'],
@@ -119,15 +122,14 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
                 //echo "<br >Transaction is successfully Completed";
-
+                $successMessage .= 'Transaction is successfully Completed';
                 $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
                 if ($examReg) {
                     $examReg->transaction_id = $tran_id; // Set the new value for the column
                     $examReg->payment = 'Processing'; // Set the new value for the column
                     $examReg->save(); // Save the changes
                 }
-                $successMessage .= 'Transaction is successfully Completed';
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+                return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             /*
@@ -136,17 +138,20 @@ class SslCommerzPaymentController extends Controller
             //echo "Transaction is successfully Completed";
             $successMessage .= 'Transaction is successfully Completed';
             $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
-                if ($examReg) {
-                    $examReg->transaction_id = $tran_id; // Set the new value for the column
-                    $examReg->payment = 'Processing'; // Set the new value for the column
-                    $examReg->save(); // Save the changes
-                }
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+            if ($examReg) {
+                $examReg->transaction_id = $tran_id; // Set the new value for the column
+                $examReg->payment = 'Processing'; // Set the new value for the column
+                $examReg->save(); // Save the changes
+            }
+            return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             //echo "Invalid Transaction";
             session()->flash('message', 'Invalid Transaction');
-                return url('examinee.unpaid');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         }
     }
 
@@ -163,22 +168,28 @@ class SslCommerzPaymentController extends Controller
                 ->where('transaction_id', $tran_id)
                 ->update(['status' => 'Failed']);
             //echo "Transaction is Falied";
-            $failMessage = 'Transaction is Falied';
-                return url('examinee.unpaid');
+            session()->flash('message', 'Transaction is Falied');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             //echo "Transaction is already Successful";
             $successMessage = 'Transaction is already Successful';
             $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
-                if ($examReg) {
-                    $examReg->transaction_id = $tran_id; // Set the new value for the column
-                    $examReg->payment = 'Processing'; // Set the new value for the column
-                    $examReg->save(); // Save the changes
-                }
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+            if ($examReg) {
+                $examReg->transaction_id = $tran_id; // Set the new value for the column
+                $examReg->payment = 'Processing'; // Set the new value for the column
+                $examReg->save(); // Save the changes
+            }
+            return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
         } else {
             //echo "Transaction is Invalid";
-            session()->flash('message', 'Invalid Transaction');
-            return url('examinee.unpaid');
+            session()->flash('message', 'Transaction is Invalid');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         }
 
     }
@@ -187,31 +198,37 @@ class SslCommerzPaymentController extends Controller
     {
         $tran_id = $request->input('tran_id');
 
-        $order_details = DB::table('orders')
+        $order_details = DB::table('itee_orders')
             ->where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount', 'itee_exam_registration_id')->first();
 
         if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
+            $update_product = DB::table('itee_orders')
                 ->where('transaction_id', $tran_id)
                 ->update(['status' => 'Canceled']);
             //echo "Transaction is Cancel";
             session()->flash('message', 'Transaction is Cancel');
-            return url('examinee.unpaid');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
             //echo "Transaction is already Successful";
             $successMessage = 'Transaction is already Successful';
             $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
-                if ($examReg) {
-                    $examReg->transaction_id = $tran_id; // Set the new value for the column
-                    $examReg->payment = 'Processing'; // Set the new value for the column
-                    $examReg->save(); // Save the changes
-                }
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+            if ($examReg) {
+                $examReg->transaction_id = $tran_id; // Set the new value for the column
+                $examReg->payment = 'Processing'; // Set the new value for the column
+                $examReg->save(); // Save the changes
+            }
+            return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
         } else {
             //echo "Transaction is Invalid";
             session()->flash('message', 'Transaction is Invalid');
-            return url('examinee.unpaid');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         }
 
 
@@ -226,7 +243,7 @@ class SslCommerzPaymentController extends Controller
             $tran_id = $request->input('tran_id');
 
             #Check order status in order tabel against the transaction id or order id.
-            $order_details = DB::table('orders')
+            $order_details = DB::table('itee_orders')
                 ->where('transaction_id', $tran_id)
                 ->select('transaction_id', 'status', 'currency', 'amount', 'itee_exam_registration_id')->first();
 
@@ -239,19 +256,19 @@ class SslCommerzPaymentController extends Controller
                     in order table as Processing or Complete.
                     Here you can also sent sms or email for successful transaction to customer
                     */
-                    $update_product = DB::table('orders')
+                    $update_product = DB::table('itee_orders')
                         ->where('transaction_id', $tran_id)
                         ->update(['status' => 'Processing']);
 
                     //echo "Transaction is successfully Completed";
                     $successMessage = 'Transaction is successfully Completed';
-            $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
-                if ($examReg) {
-                    $examReg->transaction_id = $tran_id; // Set the new value for the column
-                    $examReg->payment = 'Processing'; // Set the new value for the column
-                    $examReg->save(); // Save the changes
-                }
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+                    $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
+                    if ($examReg) {
+                        $examReg->transaction_id = $tran_id; // Set the new value for the column
+                        $examReg->payment = 'Processing'; // Set the new value for the column
+                        $examReg->save(); // Save the changes
+                    }
+                    return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
                 }
             } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
 
@@ -259,24 +276,30 @@ class SslCommerzPaymentController extends Controller
 
                 //echo "Transaction is already successfully Completed";
                 $successMessage = 'Transaction is already successfully Completed';
-            $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
+                $examReg = IteeExamRegistration::with(['examType', 'category', 'fee'])->find($order_details->itee_exam_registration_id);
                 if ($examReg) {
                     $examReg->transaction_id = $tran_id; // Set the new value for the column
                     $examReg->payment = 'Processing'; // Set the new value for the column
                     $examReg->save(); // Save the changes
                 }
-                return view('examinee.dashboard-success-courses', compact('successMessage', 'examReg'));
+                return view('examinee.dashboard-completed-courses', compact('successMessage', 'examReg'));
             } else {
                 #That means something wrong happened. You can redirect customer to your product page.
 
                 //echo "Invalid Transaction";
                 session()->flash('message', 'Invalid Transaction');
-            return url('examinee.unpaid');
+                $enrolledCourseCount = IteeExamRegistration::count();
+                $totalExamFee = IteeExamFee::count();
+                $totalExaminee = User::where('user_type', 'itee_student')->count();
+                return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
             }
         } else {
             //echo "Invalid Data";
             session()->flash('message', 'Invalid Data');
-            return url('examinee.unpaid');
+            $enrolledCourseCount = IteeExamRegistration::count();
+            $totalExamFee = IteeExamFee::count();
+            $totalExaminee = User::where('user_type', 'itee_student')->count();
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
         }
     }
 

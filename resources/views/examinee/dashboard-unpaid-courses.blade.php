@@ -1,10 +1,6 @@
 @extends('examinee.layout')
 @section('content')
-    @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
+
     <div class="pt-5 mb-5 dashboard-heading">
         <h3 class="fs-22 font-weight-semi-bold">Unpaid Exams</h3>
     </div>
