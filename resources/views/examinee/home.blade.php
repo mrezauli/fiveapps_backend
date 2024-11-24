@@ -197,10 +197,10 @@
                         <div class="hero-content">
                             <div class="section-heading">
                                 <h2 class="pb-3 text-white section__title fs-45 lh-55">
-                                    Welcome to ITEE Exam Registration System
+                                    Welcome to BDITEC
                                 </h2>
-                                <p class="pb-4 text-white section__desc">Who tells you can’t do it? Build the
-                                    confidence, skills, and qualifications to take control of your future.</p>
+                                <p class="pb-4 text-white section__desc">Bangladesh IT-engineers Examination Center
+                                    (BD-ITEC)</p>
                             </div><!-- end section-heading -->
                         </div><!-- end hero-content -->
                     </div><!-- end col-lg-7 -->
@@ -210,9 +210,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color">
-                                            <i class="la la-desktop"></i>
+                                            <i class="la la-area-chart"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Tech & Coding</h3>
+                                        <h3 class="cat__title fs-16">Pearson & VUE</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -220,9 +220,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color-2">
-                                            <i class="la la-briefcase"></i>
+                                            <i class="la la-bank"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Business</h3>
+                                        <h3 class="cat__title fs-16">ITEE</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -230,9 +230,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color-3">
-                                            <i class="la la-paint-brush"></i>
+                                            <i class="la la-building"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Design</h3>
+                                        <h3 class="cat__title fs-16">NSDA</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -240,9 +240,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color-4">
-                                            <i class="la la-laptop"></i>
+                                            <i class="la la-bullseye"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">IT & Software</h3>
+                                        <h3 class="cat__title fs-16">BKIICT</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -250,9 +250,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color-5">
-                                            <i class="la la-calculator"></i>
+                                            <i class="la la-certificate"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Mathematics</h3>
+                                        <h3 class="cat__title fs-16">BCC Governed</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -260,9 +260,9 @@
                                 <div class="category-item category-item-layout-2">
                                     <a href="#" class="category-content">
                                         <div class="shadow-sm icon-element icon-element-md text-color-6">
-                                            <i class="la la-magic"></i>
+                                            <i class="la la-chrome"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Marketing</h3>
+                                        <h3 class="cat__title fs-16">Customized</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
@@ -304,10 +304,8 @@
                             </div><!-- end card-image -->
                             <div class="card-body">
                                 <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                                <h5 class="card-title"><a
-                                        href="course-details.html">{{ $examFee->exam_type->name }}</a></h5>
-                                <p class="card-text"><a
-                                        href="teacher-detail.html">{{ $examFee->exam_category->name }}</a></p>
+                                <h5 class="card-title">{{ $examFee->exam_type->name }}</h5>
+                                <p class="card-text">{{ $examFee->exam_category->name }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p class="text-black card-price font-weight-bold">BDT {{ $examFee->fee }} (৳)</p>
                                 </div>
@@ -545,7 +543,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <h4 class="counter__title counter text-color-2">7520</h4>
+                        <h4 class="counter__title counter text-color-2">255</h4>
                         <p class="counter__meta">expert instructors</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -607,8 +605,8 @@
                                 </g>
                             </svg>
                         </div>
-                        <h4 class="counter__title counter text-color-4">97,220</h4>
-                        <p class="counter__meta">students enrolled</p>
+                        <h4 class="counter__title counter text-color-4">1,000</h4>
+                        <p class="counter__meta">candidates enrolled</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
                 <div class="col-lg-4 responsive-column-half">
@@ -650,7 +648,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <h4 class="counter__title counter text-color-5">20</h4>
+                        <h4 class="counter__title counter text-color-5">41</h4>
                         <p class="counter__meta">years of experience</p>
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -701,11 +699,11 @@
         <span class="stroke-shape stroke-shape-6"></span>
         <div class="container">
             <div class="section-heading">
-                <h2 class="mb-3 section__title">Trusted by Academia & BASIS</h2>
+                <h2 class="mb-3 section__title">Trusted by Academia & Industry (BASIS)</h2>
                 <p class="section__desc">Get access to high quality learning wherever you are
                 </p>
             </div><!-- end section-heading -->
-            <div class="client-logo-carousel mt-40px">
+            {{-- <div class="client-logo-carousel mt-40px">
                 <a href="#" class="client-logo-item"><img src="{{ asset('aduca/images/sponsor-img.png') }}"
                         alt="brand image"></a>
                 <a href="#" class="client-logo-item"><img src="{{ asset('aduca/images/sponsor-img2.png') }}"
@@ -716,7 +714,7 @@
                         alt="brand image"></a>
                 <a href="#" class="client-logo-item"><img src="{{ asset('aduca/images/sponsor-img5.png') }}"
                         alt="brand image"></a>
-            </div><!-- end client-logo-carousel -->
+            </div><!-- end client-logo-carousel --> --}}
         </div><!-- end container -->
     </section><!-- end client-logo-area -->
     <!-- ================================
@@ -854,12 +852,12 @@
             <div id="tooltip_content_{{ $examFee->exam_category->id }}">
                 <div class="card card-item">
                     <div class="card-body">
-                        <h5 class="pb-1 card-title"><a href="course-details.html">{{ $examFee->exam_type->name }}</a>
+                        <h5 class="pb-1 card-title">{{ $examFee->exam_type->name }}
                         </h5>
                         <p class="pt-1 card-text fs-14 lh-22">{{ $examFee->exam_category->name }}</p>
                         <div class="pt-1 d-flex justify-content-between align-items-center">
-                            <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
-                                    class="mr-1 la la-shopping-cart fs-18"></i> Add to Cart</a>
+                            <a href="{{ route('register') }}" class="mr-3 btn theme-btn flex-grow-1"><i
+                                    class="mr-1 la la-shopping-cart fs-18"></i> Register</a>
 
                         </div>
                     </div>
