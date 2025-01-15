@@ -9,8 +9,7 @@
                 <div class="card-image">
                     <a href="{{ route('examinee.enroll', $examReg->id) }}" class="d-block">
                         <?php $imageUrl = $examReg->examType->image; ?>
-                        <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap"
-                            style="width: 370px; height: 247px;">
+                        <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap">
                     </a>
                 </div><!-- end card-image -->
                 <div class="card-body">

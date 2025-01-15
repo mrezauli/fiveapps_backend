@@ -12,8 +12,7 @@
         <div class="card card-item card-item-list-layout">
             <div class="card-image">
                 <?php $imageUrl = $examReg->examType->image; ?>
-                <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap"
-                    style="width: 370px; height: 247px;">
+                <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap">
 
             </div><!-- end card-image -->
             <div class="card-body">

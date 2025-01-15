@@ -51,7 +51,7 @@
                         <div class="col-lg-2">
                             <div class="logo-box">
                                 <a href="{{ url('/') }}" class="logo"><img
-                                        src="{{ asset('aduca/images/logoBDITEC.png') }}" alt="logo"></a>
+                                        src="{{ asset('aduca/images/logo.png') }}" alt="logo"></a>
                                 <div class="user-btn-action">
                                     <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm"
                                         data-toggle="tooltip" data-placement="top" title="Main menu">
@@ -823,7 +823,7 @@
                     <div class="col-lg-6">
                         <div class="flex-wrap d-flex align-items-center">
                             <a href="index.html" class="pr-4">
-                                <img src="{{ asset('aduca/images/logoBDITEC.png') }}" alt="footer logo"
+                                <img src="{{ asset('aduca/images/logo.png') }}" alt="footer logo"
                                     class="footer__logo">
                             </a>
                             <p class="copy-desc">Copyright &copy; 2024 BCC</p>

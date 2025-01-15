@@ -229,8 +229,8 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <label class="label-text">Post Code</label>
-                                        <input class="pl-3 form-control form--control" type="text" name="post_code"
-                                            placeholder="Post Code" required maxlength="244"
+                                        <input class="pl-3 form-control form--control" type="number" name="post_code"
+                                            placeholder="Post Code" required min="0" max="9999"
                                             value="{{ old('post_code') }}">
 
                                     </div>
@@ -289,7 +289,7 @@
                                 <div class="form-group">
                                     <div class="w-auto select-container">
                                         <label for="education_qualification" class="label-text">Education
-                                            Qualification</label>
+                                            Qualification (Latest Certification Only)</label>
                                         <select id="education_qualification" name="education_qualification"
                                             class="select-container-select" required>
                                             <option value="">Select Education
@@ -328,8 +328,8 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Passing Year</label>
                                         <input class="pl-3 form-control form--control" type="number" min="1971"
-                                            max="2005" name="passing_year" placeholder="Passing Year"
-                                            maxlength="244" required value="{{ old('passing_year') }}">
+                                            max="2005" name="passing_year" placeholder="Passing Year" required
+                                            value="{{ old('passing_year') }}">
 
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@
                                         <label class="label-text">Result</label>
                                         <input class="pl-3 form-control form--control" type="number" min="2.00"
                                             max="4.00" step="0.01" name="result" placeholder="Result" required
-                                            maxlength="244" value="{{ old('result') }}">
+                                            value="{{ old('result') }}">
 
                                     </div>
                                 </div>

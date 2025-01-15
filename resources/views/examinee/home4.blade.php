@@ -56,7 +56,7 @@
                         <div class="col-lg-3">
                             <div class="logo-box justify-content-between">
                                 <a href="{{ url('/') }}" class="logo"><img
-                                        src="{{ asset('aduca/images/logoBDITEC.png') }}" alt="logo"></a>
+                                        src="{{ asset('aduca/images/logo.png') }}" alt="logo"></a>
                                 <div class="user-btn-action">
                                     <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm"
                                         data-toggle="tooltip" data-placement="top" title="Main menu">
@@ -253,8 +253,7 @@
                             <div class="card-image">
                                 <a href="course-details.html" class="d-block">
                                     <?php $imageUrl = $examFee->exam_type->image; ?>
-                                    <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap"
-                                        style="height: 247px;">
+                                    <img class="card-img-top" src="{{ asset($imageUrl) }}" alt="Card image cap">
                                 </a>
                             </div><!-- end card-image -->
                             <div class="card-body">

@@ -48,7 +48,7 @@
                         <div class="col-lg-12">
                             <div class="logo-box logo--box">
                                 <a href="{{ url('/') }}" class="logo"><img
-                                        src="{{ asset('aduca/images/logoBDITEC.png') }}" alt="logo"></a>
+                                        src="{{ asset('aduca/images/logo.png') }}" alt="logo"></a>
                                 <div class="user-btn-action">
                                     <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm"
                                         data-toggle="tooltip" data-placement="top" title="Main menu">
@@ -222,7 +222,7 @@
                 <i class="la la-times"></i>
             </div><!-- end off-canvas-menu-close -->
             <div class="px-4 logo-box">
-                <a href="{{ url('/') }}" class="logo"><img src="{{ asset('aduca/images/logoBDITEC.png') }}"
+                <a href="{{ url('/') }}" class="logo"><img src="{{ asset('aduca/images/logo.png') }}"
                         alt="logo"></a>
             </div>
             <ul class="generic-list-item off-canvas-menu-list off--canvas-menu-list pt-35px">
