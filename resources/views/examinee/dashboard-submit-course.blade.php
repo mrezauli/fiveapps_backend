@@ -112,11 +112,11 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <div class="w-auto select-container">
-                                        <input type="hidden" id="itee_book_id" name="itee_book_id" required>
+                                        <input type="hidden" id="itee_book_id" name="itee_book_id">
                                         <label for="itee_book_id_display" class="label-text">Select
                                             Exam Book</label>
                                         <select id="itee_book_id_display" name="itee_book_id_display[]"
-                                            class="select-container-select" required multiple>
+                                            class="select-container-select" multiple>
                                             @foreach ($books as $book)
                                                 <option value="{{ $book->id }}"
                                                     {{ old('itee_book_id') == $book->id ? 'selected' : '' }}>
@@ -352,7 +352,7 @@
                                     <div class="w-auto select-container">
                                         <label class="label-text">Result</label>
                                         <input class="pl-3 form-control form--control" type="number" min="2.00"
-                                            max="4.00" step="0.01" name="result" placeholder="Result" required
+                                            max="5.00" step="0.1" name="result" placeholder="Result" required
                                             value="{{ old('result') }}">
 
                                     </div>

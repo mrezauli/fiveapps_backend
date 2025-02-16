@@ -9,7 +9,7 @@
         "barryvdh/laravel-dompdf": "^2.1",
         "elibyy/tcpdf-laravel": "^11.1",
         "itsgoingd/clockwork": "^5.2",
-        "laravel/breeze": "^2.0",
+        "laravel/breeze": "^2.3",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",

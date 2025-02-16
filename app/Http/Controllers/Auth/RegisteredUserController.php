@@ -47,6 +47,8 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        //$user->sendEmailVerificationNotification();
+
         //assign 'examinee' role to user
         $user->assignRole('Examinee');
 

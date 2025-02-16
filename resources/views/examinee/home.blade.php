@@ -262,7 +262,7 @@
                                         <div class="shadow-sm icon-element icon-element-md text-color-6">
                                             <i class="la la-chrome"></i>
                                         </div>
-                                        <h3 class="cat__title fs-16">Customized</h3>
+                                        <h3 class="cat__title fs-16">E-Recruitment</h3>
                                     </a><!-- end category-content -->
                                 </div><!-- end category-item -->
                             </div><!-- end col-lg-4 -->
