@@ -6,27 +6,27 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "barryvdh/laravel-dompdf": "^2.1",
+        "barryvdh/laravel-dompdf": "^2.2",
         "elibyy/tcpdf-laravel": "^11.1",
-        "itsgoingd/clockwork": "^5.2",
-        "laravel/breeze": "^2.3",
-        "laravel/framework": "^11.0",
-        "laravel/sanctum": "^4.0",
-        "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^3.1",
-        "php-flasher/flasher-noty-laravel": "^1.15",
-        "spatie/laravel-permission": "^6.4",
-        "tecnickcom/tcpdf": "^6.7"
+        "itsgoingd/clockwork": "^5.2.2",
+        "laravel/breeze": "^2.3.3",
+        "laravel/framework": "^11.28.1",
+        "laravel/sanctum": "^4.0.3",
+        "laravel/tinker": "^2.10",
+        "maatwebsite/excel": "^3.1.58",
+        "php-flasher/flasher-noty-laravel": "^1.15.14",
+        "spatie/laravel-permission": "^6.9",
+        "tecnickcom/tcpdf": "^6.7.6"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.23",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.0",
-        "pestphp/pest": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0",
-        "spatie/laravel-ignition": "^2.4"
+        "fakerphp/faker": "^1.23.1",
+        "laravel/pint": "^1.18.1",
+        "laravel/sail": "^1.36",
+        "mockery/mockery": "^1.6.12",
+        "nunomaduro/collision": "^8.5",
+        "pestphp/pest": "^2.36",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "spatie/laravel-ignition": "^2.8"
     },
     "autoload": {
         "psr-4": {
