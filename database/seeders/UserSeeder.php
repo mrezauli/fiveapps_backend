@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@touchandsolve.com',
             'app_name' => '_all_',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@bcc.com',
             'app_name' => 'bcc_connect',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 
@@ -37,6 +39,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@nttn.com',
             'app_name' => 'bcc_connect',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 

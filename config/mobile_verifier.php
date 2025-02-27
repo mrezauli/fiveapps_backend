@@ -1,5 +1,8 @@
 <?php
 
+use App\VonageSMSClient;
+
+
 return [
 
     /*
@@ -63,7 +66,7 @@ return [
      | responsible for sending SMS to users.
      |
      */
-    'sms_client' => '',
+    'sms_client' => VonageSMSClient::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -150,5 +153,5 @@ return [
         'queue' => 'default',
         'tries' => 3,
         'timeout' => 60,
-    ]
+    ],
 ];
