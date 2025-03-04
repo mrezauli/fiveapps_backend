@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +20,7 @@ class UserSeeder extends Seeder
         $superadmin = User::create([
             'name' => 'Touch',
             'email' => 'admin@touchandsolve.com',
+            'mobile_number' => Str::random(),
             'app_name' => '_all_',
             'active' => true,
             'password' => Hash::make(12345600),
@@ -27,6 +29,7 @@ class UserSeeder extends Seeder
         $bcc = User::create([
             'name' => 'Touch',
             'email' => 'admin@bcc.com',
+            'mobile_number' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
             'password' => Hash::make(12345600),
@@ -35,6 +38,7 @@ class UserSeeder extends Seeder
         $nttn = User::create([
             'name' => 'Touch',
             'email' => 'admin@nttn.com',
+            'mobile_number' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
             'password' => Hash::make(12345600),

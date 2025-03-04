@@ -16,6 +16,18 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('app_name')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+
+            $table->string('mobile_number')->unique();
+
+            $table->timestamp('mobile_verified_at')->nullable();
+
+            $table->string('mobile_verify_code')->nullable();
+
+            $table->tinyInteger('mobile_attempts_left')->default(0);
+
+            $table->timestamp('mobile_last_attempt_date')->nullable();
+            $table->timestamp('mobile_verify_code_sent_at')->nullable();
+
             $table->string('password');
             $table->boolean('active')->default(false);
             $table->rememberToken();

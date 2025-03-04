@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Interfaces\MustVerifyMobile as IMustVerifyMobile;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -10,10 +11,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\MustVerifyMobile;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, HasRoles;
+
+    use MustVerifyMobile;
 
     /**
      * The attributes that are mass assignable.
@@ -40,7 +44,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'license_number',
         'photo',
         'ndc_admin_sector',
-        'identification_number'
+        'identification_number',
+        'mobile_number',
+        'mobile_verify_code',
+        'mobile_attempts_left',
+        'mobile_last_attempt_date',
+        'mobile_verify_code_sent_at',
     ];
 
     /**
@@ -73,6 +82,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+        'mobile_verify_code',
     ];
 
     /**
@@ -85,9 +95,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'number_verified_at' => 'datetime',
+            'mobile_verify_code_sent_at' => 'datetime',
+            'mobile_last_attempt_date' => 'datetime'
         ];
     }
-
 
     public function division()
     {
@@ -124,6 +136,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function unions()
     {
         return $this->hasMany(Union::class, 'upazila_id', 'upazila_id');
+    }
+
+    public function routeNotificationForVonage($notification)
+    {
+        return $this->mobile_number;
     }
 
 }
