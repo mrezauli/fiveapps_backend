@@ -369,7 +369,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // ITEE Exam Examinee Part Dashboard
-    Route::prefix('/examinee')->name('examinee.')->group(function () {
+    Route::prefix('/examinee')->name('examinee.')->middleware('mobile.verified')->group(function () {
         //other pages
         Route::get('/profile', [ExamineeDashboardController::class, 'profile'])->name('profile');
         Route::get('/settings', [ExamineeDashboardController::class, 'settings'])->name('settings');

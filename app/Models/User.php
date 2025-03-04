@@ -15,7 +15,7 @@ use App\Traits\MustVerifyMobile;
 
 class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, HasRoles;
+    use HasFactory, Notifiable, HasApiTokens, HasRoles, MustVerifyMobile;
 
     use MustVerifyMobile;
 

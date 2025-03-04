@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'mobile_number' => Str::random(),
             'app_name' => '_all_',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
             'mobile_number' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 
@@ -41,6 +43,7 @@ class UserSeeder extends Seeder
             'mobile_number' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
+            'mobile' => '017xxxxxxxx',
             'password' => Hash::make(12345600),
         ]);
 

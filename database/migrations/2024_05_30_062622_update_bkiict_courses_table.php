@@ -12,7 +12,8 @@ return new class extends Migration {
     {
         Schema::table('bkiict_courses', function (Blueprint $table) {
             $table->dropColumn(['deadline', 'class_start']);
-            $table->json('instructor')->nullable()->change();
+            //$table->json('instructor')->nullable()->change();
+            DB::statement('ALTER TABLE bkiict_courses ALTER COLUMN instructor TYPE json USING instructor::json');
         });
     }
 
@@ -24,7 +25,8 @@ return new class extends Migration {
         Schema::table('bkiict_courses', function (Blueprint $table) {
             $table->timestamp('deadline')->nullable();
             $table->timestamp('class_start')->nullable();
-            $table->string('instructor')->nullable()->change();
+            //$table->string('instructor')->nullable()->change();
+            DB::statement('ALTER TABLE bkiict_courses ALTER COLUMN instructor TYPE text USING instructor::text');
         });
     }
 };

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Notifications\VerifyMobileNumber;
 
 class RegisteredUserController extends Controller
 {
@@ -43,6 +44,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'mobile_number' => $request->phone,
+            'verification_code' => Str::random(6), // Generate a 6-digit code
+            'verification_code_expires_at' => now()->addMinutes(30), // Code expires in 30 minutes
             'password' => Hash::make($request->password),
             'mobile_number' => $request->mobile_number,
             //'mobile_verify_code' => random_int(111111, 999999),
@@ -52,6 +56,9 @@ class RegisteredUserController extends Controller
             'active' => 0
         ]);
         dd('here');
+
+
+        $user->notify(new VerifyMobileNumber($user->verification_code));
 
         event(new Registered($user));
 
