@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Middleware\EnsureMobileIsVerified;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use App\Http\Middleware\EnsureMobileIsVerifiedMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,8 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'optional.auth' => \App\Http\Middleware\OptionalAuth::class,
-            //'mobile.verified' => EnsureMobileIsVerified::class,
-            'mobile.verified' => \App\Http\Middleware\EnsureMobileIsVerified::class,
+            'verify.mobile' => \App\Http\Middleware\EnsureMobileIsVerifiedMiddleware::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             '/success',
@@ -26,9 +26,6 @@ return Application::configure(basePath: dirname(__DIR__))
             '/ipn',
             '/pay-via-ajax', // only required to run example codes. Please see bellow.
         ]);
-        // $middleware->web(append: [
-        //     EnsureMobileIsVerified::class,
-        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

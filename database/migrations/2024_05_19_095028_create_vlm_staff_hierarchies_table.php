@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('vlm_staff_hierarchies', function (Blueprint $table) {
             $table->id();
             $table->integer('seniorStaffId')->unsigned();
-            //$table->json('juniorStaffs');
-            DB::statement('ALTER TABLE vlm_staff_hierarchies ALTER COLUMN juniorStaffs TYPE json USING juniorStaffs::json');
+            $table->json('juniorStaffs');
+            //DB::statement('ALTER TABLE vlm_staff_hierarchies ALTER COLUMN juniorStaffs TYPE json USING juniorStaffs::json');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::dropIfExists('vlm_staff_hierarchies');
-        DB::statement('ALTER TABLE vlm_staff_hierarchies ALTER COLUMN juniorStaffs TYPE text USING juniorStaffs::text');
+        //DB::statement('ALTER TABLE vlm_staff_hierarchies ALTER COLUMN juniorStaffs TYPE text USING juniorStaffs::text');
     }
 };

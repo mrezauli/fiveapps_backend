@@ -7,14 +7,15 @@ use Exception;
 use Carbon\Carbon;
 use App\Models\Trip;
 use App\Models\User;
+use App\Models\IteeNotice;
 use App\Models\IteeExamFee;
 use App\Helper\CustomHelper;
 use Illuminate\Http\Request;
 use App\Models\DriverWithCar;
 use App\Models\VlmStaffHierarchy;
 use App\Models\IteeExamRegistration;
-use function Laravel\Prompts\select;
 
+use function Laravel\Prompts\select;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\AllNotification;
 use Illuminate\Support\Facades\Notification;
@@ -47,10 +48,11 @@ class DashboardController extends Controller
         } else if (CustomHelper::userRoleName(auth()->user()) == 'BKIICT Admin') {
             return redirect()->route('bkiict.course.index');
         } else if (CustomHelper::userRoleName(auth()->user()) == 'Examinee') {
+            $notices = IteeNotice::all()->pluck('notice')->toArray();
             $enrolledCourseCount = IteeExamRegistration::where('user_id', auth()->user()->id)->count();
             $totalExamFee = IteeExamFee::count();
             $totalExaminee = User::where('user_type', 'itee_student')->count();
-            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee')); // examinee dashboard
+            return view('examinee.dashboard', compact('enrolledCourseCount', 'totalExamFee', 'totalExaminee', "notices")); // examinee dashboard
         } else {
             Auth::logout();
             return redirect('login')->with("error", "Wrong Credentials");

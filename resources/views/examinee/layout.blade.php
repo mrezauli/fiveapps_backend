@@ -299,6 +299,14 @@
             </ul>
         </div><!-- end off-canvas-menu -->
         <div class="dashboard-content-wrap">
+            <marquee behavior="scroll" direction="left">
+
+                @forelse($notices as $notice)
+                    ⚡ {{ $notice }}! 🚀
+                @empty
+                    <p>No notices found.</p>
+                @endforelse
+            </marquee>
             <div class="mb-4 ml-3 dashboard-menu-toggler btn theme-btn theme-btn-sm lh-28 theme-btn-transparent">
                 <i class="mr-1 la la-bars"></i> Dashboard Nav
             </div>

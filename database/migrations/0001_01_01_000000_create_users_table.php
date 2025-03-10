@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('app_name')->nullable();
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->string('mobile_number')->unique();
+            //$table->string('mobile_number')->unique();
 
             $table->timestamp('mobile_verified_at')->nullable();
 

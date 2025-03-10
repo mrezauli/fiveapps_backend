@@ -94,7 +94,7 @@ Route::get('/', function () {
 Route::get('/', [ExamineeDashboardController::class, 'home'])->name('examinee.home');
 
 //make dashboard route to fit examinee
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verify.mobile'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -369,7 +369,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // ITEE Exam Examinee Part Dashboard
-    Route::prefix('/examinee')->name('examinee.')->middleware('mobile.verified')->group(function () {
+    Route::prefix('/examinee')->name('examinee.')->middleware('verify.mobile')->group(function () {
         //other pages
         Route::get('/profile', [ExamineeDashboardController::class, 'profile'])->name('profile');
         Route::get('/settings', [ExamineeDashboardController::class, 'settings'])->name('settings');

@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Auth\Events\Registered;
 use App\Notifications\VerifyMobileNumber;
 
 class RegisteredUserController extends Controller
@@ -55,17 +56,20 @@ class RegisteredUserController extends Controller
             'user_type' => 'itee_student',
             'active' => 0
         ]);
-        dd('here');
 
 
-        $user->notify(new VerifyMobileNumber($user->verification_code));
+
+        //$user->notify(new VerifyMobileNumber($user->verification_code));
+
 
         event(new Registered($user));
+
 
         //$user->sendEmailVerificationNotification();
 
         //assign 'examinee' role to user
         $user->assignRole('Examinee');
+
 
         Auth::login($user);
 
