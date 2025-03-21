@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'string', 'max:17', 'unique:'.User::class],
-            'mobile_number' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -45,11 +44,9 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'mobile_number' => $request->phone,
             'verification_code' => Str::random(6), // Generate a 6-digit code
             'verification_code_expires_at' => now()->addMinutes(30), // Code expires in 30 minutes
             'password' => Hash::make($request->password),
-            'mobile_number' => $request->mobile_number,
             //'mobile_verify_code' => random_int(111111, 999999),
             //'mobile_verify_code_sent_at' => now(),
             //'mobile_attempts_left' => config('mobile.max_attempts'),

@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'verified' => 'Phone number verified.',
-    'expired' => 'This code is expired, a new one is sent to your mobile',
+    'verified' => 'Success! Phone number is now verified.',
+    'expired' => 'This code is expired, a new one is sent to your mobile.',
     'new_code' => 'Invalid verification code entered! A new code has been sent to your mobile.',
     'error_code' => 'Invalid verification code entered!',
     'error_with_attempts' => 'Invalid verification code entered! :attempts tries left.',

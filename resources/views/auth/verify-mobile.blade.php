@@ -1,10 +1,5 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -14,17 +9,18 @@
         </div>
 
         <div class="text-sm text-gray-600">
-            {{ __('Please enter the OTP sent to your number:') }} {{ auth()->user()->mobile_number }}
+            {{ __('Please enter the OTP sent to your number:') }} {{ auth()->user()->phone }}
         </div>
 
-        <div class="mt-4 flex items-center justify-between">
+        <div class="flex items-center justify-between mt-4">
             <form method="POST" action="{{ route('verification.verify-mobile') }}">
                 @csrf
 
                 <div>
                     <x-label for="code" :value="__('Code')" />
 
-                    <x-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autofocus />
+                    <x-input id="code" class="block w-full mt-1" type="number" max="999999" min="111111" name="code" :value="old('code')"
+                        required autofocus />
                 </div>
 
                 <div class="mt-4">

@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('user_type')->nullable();
             $table->string('phone')->nullable();
-            $table->string('mobile_number')->nullable()->unique();
-            $table->string('verification_code')->nullable();
-            $table->string('verification_code_expires_at')->nullable();
+            $table->timestamp('mobile_verified_at')->nullable();
+            $table->string('mobile_verify_code')->nullable();
+            $table->tinyInteger('mobile_attempts_left')->default(0);
+            $table->timestamp('mobile_last_attempt_date')->nullable();
+            $table->timestamp('mobile_verify_code_sent_at')->nullable();
             $table->string('isp_user_type')->nullable();
             $table->string('organization')->nullable();
             $table->string('designation')->nullable();

@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $superadmin = User::create([
             'name' => 'Touch',
             'email' => 'admin@touchandsolve.com',
-            'mobile_number' => Str::random(),
+            'phone' => Str::random(),
             'app_name' => '_all_',
             'active' => true,
             'password' => Hash::make(12345600),
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
         $bcc = User::create([
             'name' => 'Touch',
             'email' => 'admin@bcc.com',
-            'mobile_number' => Str::random(),
+            'phone' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
             'password' => Hash::make(12345600),
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         $nttn = User::create([
             'name' => 'Touch',
             'email' => 'admin@nttn.com',
-            'mobile_number' => Str::random(),
+            'phone' => Str::random(),
             'app_name' => 'bcc_connect',
             'active' => true,
             'password' => Hash::make(12345600),

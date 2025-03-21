@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\MustVerifyMobile;
+use Illuminate\Notifications\Notification;
 
 class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, HasRoles, MustVerifyMobile;
-
-    use MustVerifyMobile;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,7 +45,6 @@ class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEma
         'photo',
         'ndc_admin_sector',
         'identification_number',
-        'mobile_number',
         'mobile_verify_code',
         'mobile_attempts_left',
         'mobile_last_attempt_date',
@@ -138,9 +137,12 @@ class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEma
         return $this->hasMany(Union::class, 'upazila_id', 'upazila_id');
     }
 
-    public function routeNotificationForVonage($notification)
+    /**
+     * Route notifications for the Vonage channel.
+     */
+    public function routeNotificationForVonage(Notification $notification): string
     {
-        return $this->mobile_number;
+        return $this->phone;
     }
 
 }

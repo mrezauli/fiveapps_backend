@@ -26,13 +26,6 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
-        <div class="mt-4">
-            <x-input-label for="mobile_number" :value="__('Mobile Number')" />
-            <x-text-input id="mobile_number" class="block w-full mt-1" type="text" name="mobile_number"
-                :value="old('mobile_number')" required autocomplete="mobile_number" />
-            <x-input-error :messages="$errors->get('mobile_number')" class="mt-2" />
-        </div>
-
         {{-- <!-- Occupation -->
             <div>
                 <x-input-label for="occupation" :value="__('Occupation')" />
