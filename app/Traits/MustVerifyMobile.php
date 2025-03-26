@@ -2,7 +2,9 @@
 
 namespace App\Traits;
 
+use Xenon\LaravelBDSms\Sender;
 use App\Notifications\SendVerifySMS;
+use Xenon\LaravelBDSms\Provider\Ssl;
 
 trait MustVerifyMobile
 {
@@ -30,6 +32,6 @@ trait MustVerifyMobile
                 'mobile_verify_code_sent_at' => now(),
             ])->save();
         }
-        $this->notify(new SendVerifySMS);
+        //$this->notify(new SendVerifySMS);
     }
 }
