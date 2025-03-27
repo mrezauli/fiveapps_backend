@@ -14,10 +14,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\MustVerifyMobile;
 use Illuminate\Notifications\Notification;
 
-class User extends Authenticatable implements IMustVerifyMobile//, MustVerifyEmail
+class User extends Authenticatable implements IMustVerifyMobile, MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, HasRoles;
-    use MustVerifyMobile;
+    use MustVerifyMobile, MustVerifyMobile;
 
     /**
      * The attributes that are mass assignable.
