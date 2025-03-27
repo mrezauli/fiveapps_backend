@@ -18,7 +18,8 @@
         "maatwebsite/excel": "^3.1.58",
         "php-flasher/flasher-noty-laravel": "^1.15.14",
         "spatie/laravel-permission": "^6.9",
-        "tecnickcom/tcpdf": "^6.7.6"
+        "tecnickcom/tcpdf": "^6.7.6",
+        "xenon/laravelbdsms": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23.1",
